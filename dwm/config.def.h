@@ -50,7 +50,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const char *web[] = { "/usr/bin/qutebrowser", NULL };
-static const char *vm[] = { "/usr/bin/virt-manager", NULL };
+static const char *nvim[] = { "/usr/local/bin/st",  "-e", "nvim", NULL };
 static const char *ide[] = { "/usr/bin/mousepad", NULL };
 static const char *pavucontrol[] = { "/usr/bin/pavucontrol", NULL };
 static const char *esession[] = { "/usr/bin/lxsession-logout", NULL };
@@ -85,11 +85,11 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
+  { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ide } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavucontrol } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = chat } },
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = vm } },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = nvim } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fb } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = pdf } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = esession } },
@@ -104,11 +104,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	/* { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, */
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY /* |ShiftMask */,      XK_f,      togglefullscr,  {0} },
+	/*{ MODKEY |ShiftMask,          XK_f,      togglefullscr,  {0} }, */
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

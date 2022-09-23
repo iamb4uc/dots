@@ -40,3 +40,11 @@ map('n', '<leader>ht', ':Telescope colorscheme<CR>')
 -- Glow
 map('n', '<leader>g', ':Glow<CR>')
 map('n', '<leader>G', ':Glow!<CR>')
+
+
+-- compile document, Latex/Markdown/etc.
+map('n', '<leader>C', ':! pdflatex "%:p"<CR><CR>')
+
+-- Open corresponding .pdf/.html or preview
+
+map('n', '<leader>p', ':! mupdf-x11 $(echo % | sed \'s/tex$/pdf/\') & disown<CR><CR>')

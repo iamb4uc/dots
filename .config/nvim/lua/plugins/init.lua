@@ -88,30 +88,38 @@ return require('packer').startup(function(use)
   --                   Extras/Cosmetics                   --
   ----------------------------------------------------------
   -- colorschemes
-  use { 'tjdevries/colorbuddy.nvim' }
-  use {
-      'taphill/gruvbox.nvim',
-       config = "require('colorbuddy').colorscheme('gruvbox_nvim')"
-  }
+  use { 'shaunsingh/oxocarbon.nvim', run = './install.sh' }
+  -- use { 'tjdevries/colorbuddy.nvim' }
+  -- use {
+  --     'taphill/gruvbox.nvim',
+  --      config = "require('colorbuddy').colorscheme('gruvbox_nvim')"
+  -- }
+
+
+  -- Staline
+  use { 'tamton-aquib/staline.nvim' }
+
 
   -- Lualine
-  use {
-      'nvim-lualine/lualine.nvim',
-      requires = {
-          'kyazdani42/nvim-web-devicons',
-          opt = true,
-          options = {
-              theme = 'gruvbox'
-      }
-    }
-  }
+  -- use {
+  --     'nvim-lualine/lualine.nvim',
+  --     requires = {
+  --         'kyazdani42/nvim-web-devicons',
+  --         opt = true,
+  --         options = {
+  --             theme = 'gruvbox'
+  --     }
+  --   }
+  -- }
+
+
 
   -- Bufferline
-  use {
-      'akinsho/bufferline.nvim',
-      tag = "v2.*",
-      requires = 'kyazdani42/nvim-web-devicons'
-  }
+  -- use {
+  --     'akinsho/bufferline.nvim',
+  --     tag = "v2.*",
+  --     requires = 'kyazdani42/nvim-web-devicons'
+  -- }
 
   -- Dashboard
   use { 'glepnir/dashboard-nvim' }
