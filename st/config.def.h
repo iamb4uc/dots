@@ -94,7 +94,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 1.0;
 
 typedef struct {
 	const char* const colors[258]; /* terminal colors */
@@ -164,10 +164,23 @@ static const ColorScheme schemes[] = {
 	  "#928374", "#9d0006", "#79740e", "#b57614",
 	  "#076678", "#8f3f71", "#427b58", "#3c3836",
 	  [256]="#3c3836", "#555555"}, 15, 0, 256, 257},
+	
+  // Carbon Dark
+	{{"#161616", "#262626", "#393939", "#525252", 
+    "#dde1e6", "#f2f4f8", "#82cfff", "#08bdba",
+    "#3ddbd9", "#78a9ff", "#ee5396", "#33b1ff", 
+    "#ff7eb6", "#42be65", "#be95ff", "#ffffff",
+    [256]="#ffffff", "#525252"}, 15, 0, 256, 257},
+  // Carbon Dark
+	{{"#FFFFFF", "#FAFAFA", "#ECEFF1", "#161616", 
+    "#37474F", "#90A4AE", "#525252", "#08bdba",
+    "#ff7eb6", "#ee5396", "#FF6F00", "#0f62fe", 
+    "#673AB7", "#42be65", "#be95ff", "#FFAB91",
+    [256]="#161616", "#525252"}, 3, 0, 256, 257},
 };
 
 static const char * const * colorname;
-int colorscheme = 6;
+int colorscheme = 8;
 
 /*
  * Default colors (colorname index)
