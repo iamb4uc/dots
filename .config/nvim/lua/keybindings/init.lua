@@ -21,6 +21,10 @@ map('n', '<leader>bn', ':bn<CR>')
 -- Tab splits
 map('n', '<leader>vs', ':vsplit<CR>')
 map('n', '<leader>hs', ':split<CR>')
+map('n', '<leader>l', '<C-w>l')
+map('n', '<leader>k', '<C-w>k')
+map('n', '<leader>j', '<C-w>j')
+map('n', '<leader>h', '<C-w>h')
 
 -- nvim tree settings
 map('n', '<C-f>', ':NvimTreeFocus<CR>')
