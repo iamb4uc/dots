@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 :root {
-  --bg: #282828;
-  --fg: #ebdbb2;
-  --secondaryFg: #bdae93;
-  --containerBg: #1d2021;
+  --bg: #161616;
+  --fg: #ffffff;
+  --secondaryFg: #f2f4f6;
+  --containerBg: #262626;
   --searchBg: var(--containerBg);
-  --scrollbarColor: #282828;
-  --fontFamily: 'Roboto', sans-serif;
+  --scrollbarColor: #262626;
+  --fontFamily: 'JetBrainsMono Nerd Font', monospace;
 }
 
 body {

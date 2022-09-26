@@ -23,14 +23,36 @@ SAVEHIST=1000
 unsetopt beep
 bindkey -v
 
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.config/zsh/.zshrc'
+# Completion
 autoload -Uz compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
 compinit
-_comp_options+=(globdots)
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+zstyle ':completion:*' rehash true                              # automatically find new executables in path 
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' menu select
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
+
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zcache
+
+# Settings
+setopt correct                                                  # Auto correct mistakes
+setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt nocaseglob                                               # Case insensitive globbing
+setopt rcexpandparam                                            # Array expension with parameters
+setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt nobeep                                                   # No beep
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt autocd                                                   # if only directory path is entered, cd there.
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
 
 
 
@@ -66,6 +88,11 @@ alias la="lsd -a"
 alias lt="lsd --tree"
 alias ll="lsd -l" 
 alias lla="lsd -la"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 #
 # Applications
 alias v=nvim
@@ -78,6 +105,7 @@ alias cat=bat
 alias sudo=doas
 alias up="uptime -p"
 alias conf="lfcd ~/.config"
+alias untar="tar -xvzf"
 #
 # Git
 alias gup="git pull"
@@ -86,6 +114,11 @@ alias gcom="git commit -m "
 alias gcl="git clone --recurse-submodules"
 alias gpush="git push"
 alias gstat="git status"
+#
+# Compile(usefull with MAKEFILES)
+alias mc="doas make clean"
+alias mci="doas make clean install"
+alias mk="make"
 #
 # Package manager
 # 
@@ -109,8 +142,9 @@ alias yaser="yay -Sc"
 alias xi="doas xbps-install -S"
 alias xq="doas xbps-query"
 alias xr="doas xbps-remove"
+alias xrc="doas xbps-remove -RcOo"
 alias xrr="doas xbps-remove -ROo"
-alias xu="doas xbps-install -Suv"
+alias xu="doas xbps-install -Su"
 # 
 # Edit file shortcuts
 alias n="$EDITOR ~/.config/nvim/init.lua"
