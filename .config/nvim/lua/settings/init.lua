@@ -123,7 +123,7 @@ require("nvim-tree").setup({
 -- require('lualine').setup({
 --     options = { theme = 'gruvbox' }
 -- })
---require("bufferline").setup{}
+require("bufferline").setup{}
 
 
 ---------------
@@ -409,7 +409,25 @@ require("zen-mode").setup {
 -----------------
 -- Colorscheme --
 -----------------
-cmd("colorscheme oxocarbon")
+-- cmd("colorscheme nordfox")
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+cmd("colorscheme gruvbox")
 
 -------------
 -- Staline --
@@ -467,19 +485,19 @@ require('staline').setup {
 --------------
 -- Stabline --
 --------------
-require('stabline').setup {
-	style       = "bar", -- others: arrow, slant, bubble
-	stab_left   = "┃",
-	stab_right  = " ",
-
-	-- fg          = Default is fg of "Normal".
-	-- bg          = Default is bg of "Normal".
-	inactive_bg = "#1e2127",
-	inactive_fg = "#aaaaaa",
-	-- stab_bg     = Default is darker version of bg.,
-
-	font_active = "bold",
-	exclude_fts = { 'NvimTree', 'dashboard', 'lir' },
-	stab_start  = "",   -- The starting of stabline
-	stab_end    = "",
-}
+-- require('stabline').setup {
+-- 	style       = "bar", -- others: arrow, slant, bubble
+-- 	stab_left   = "┃",
+-- 	stab_right  = " ",
+-- 
+-- 	-- fg          = Default is fg of "Normal".
+-- 	-- bg          = Default is bg of "Normal".
+-- 	inactive_bg = "#1e2127",
+-- 	inactive_fg = "#aaaaaa",
+-- 	-- stab_bg     = Default is darker version of bg.,
+-- 
+-- 	font_active = "bold",
+-- 	exclude_fts = { 'NvimTree', 'dashboard', 'lir' },
+-- 	stab_start  = "",   -- The starting of stabline
+-- 	stab_end    = "",
+-- }

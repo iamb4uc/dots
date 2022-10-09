@@ -88,7 +88,9 @@ return require('packer').startup(function(use)
   --                   Extras/Cosmetics                   --
   ----------------------------------------------------------
   -- colorschemes
-  use { 'shaunsingh/oxocarbon.nvim', run = './install.sh' }
+  use { "EdenEast/nightfox.nvim" }
+  use { "ellisonleao/gruvbox.nvim" }
+  -- use { 'shaunsingh/oxocarbon.nvim', run = './install.sh' }
   -- use { 'tjdevries/colorbuddy.nvim' }
   -- use {
   --     'taphill/gruvbox.nvim',
@@ -115,11 +117,11 @@ return require('packer').startup(function(use)
 
 
   -- Bufferline
-  -- use {
-  --     'akinsho/bufferline.nvim',
-  --     tag = "v2.*",
-  --     requires = 'kyazdani42/nvim-web-devicons'
-  -- }
+  use {
+      'akinsho/bufferline.nvim',
+      tag = "v2.*",
+      requires = 'kyazdani42/nvim-web-devicons'
+  }
 
   -- Dashboard
   use { 'glepnir/dashboard-nvim' }

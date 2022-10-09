@@ -54,8 +54,6 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
-
-
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
@@ -96,7 +94,6 @@ alias ......='cd ../../../../..'
 #
 # Applications
 alias v=nvim
-alias vim=nvim
 alias lf=lfub
 alias nf=neofetch
 alias wal=nitrogen
@@ -147,7 +144,7 @@ alias xrr="doas xbps-remove -ROo"
 alias xu="doas xbps-install -Su"
 # 
 # Edit file shortcuts
-alias n="$EDITOR ~/.config/nvim/init.lua"
+alias ncon="$EDITOR ~/.config/nvim/init.lua"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "TerminessTTF Nerd Font Mono:size=20:antialias=true:autohint=true";
+static char *font = "TerminessTTF Nerd Font Mono:size=15:antialias=true:autohint=true";
 static int borderpx = 5;
 
 /*
@@ -94,7 +94,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 1.0;
+float alpha = 0.97;
 
 typedef struct {
 	const char* const colors[258]; /* terminal colors */
@@ -177,10 +177,16 @@ static const ColorScheme schemes[] = {
     "#ff7eb6", "#ee5396", "#FF6F00", "#0f62fe", 
     "#673AB7", "#42be65", "#be95ff", "#FFAB91",
     [256]="#161616", "#525252"}, 3, 0, 256, 257},
+  // Treefox
+  {{"#0f1c1e", "#c54e45", "#688b89", "#d78b6c",
+	  "#4d7d90", "#ad6771", "#4d7d90", "#2d4f56",
+	  "#1d3337", "#eb746b", "#8eb2af", "#fdb292",
+	  "#7aa4a1", "#b97490", "#afd4de", "#e6eaea",
+	  [256]="#425e5e", "#e6eaea"}, 15, 0, 256, 257},
 };
 
 static const char * const * colorname;
-int colorscheme = 8;
+int colorscheme = 6;
 
 /*
  * Default colors (colorname index)
