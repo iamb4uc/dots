@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "TerminessTTF Nerd Font Mono:size=15:antialias=true:autohint=true";
-static int borderpx = 5;
+static char *font = "RobotoMono Nerd Font:size=13:antialias=true:autohint=true";
+static int borderpx = 3;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -94,7 +94,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.97;
+float alpha = 0.85;
 
 typedef struct {
 	const char* const colors[258]; /* terminal colors */

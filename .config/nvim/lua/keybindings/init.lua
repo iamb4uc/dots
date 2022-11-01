@@ -46,7 +46,7 @@ map('n', '<leader>g', ':Glow<CR>')
 map('n', '<leader>G', ':Glow!<CR>')
 
 
--- compile document, Latex/Markdown/etc.
+-- compile Latex
 map('n', '<leader>C', ':! pdflatex "%:p"<CR><CR>')
 
 -- Open corresponding .pdf/.html or preview
