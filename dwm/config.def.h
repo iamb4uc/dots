@@ -4,16 +4,16 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "RobotoMono Nerd Font:size=13:antialias=true:autohint=true" };
 static const char dmenufont[]       = "RobotoMono Nerd Font:size=13:antialias=true:autohint=true";
-static const char col_gray1[]       = "#282828";
-static const char col_gray2[]       = "#282828";
-static const char col_gray3[]       = "#ebdbb2";
-static const char col_gray4[]       = "#282828";
-static const char col_cyan[]        = "#ebdbb2";
+static const char col_gray1[]       = "#000000";
+static const char col_gray2[]       = "#000000";
+static const char col_gray3[]       = "#ffffff";
+static const char col_gray4[]       = "#000000";
+static const char col_cyan[]        = "#ffffff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },

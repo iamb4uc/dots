@@ -8,6 +8,7 @@ const bookmarks = [
       { name: "KaTex", url: "https://katex.org/docs/supported.html" },
       { name: "College", url: "http://karimganjcollege.ac.in" },
       { name: "University", url: "https://ausexamination.ac.in" },
+      { name: "Linode", url: "https://cloud.linode.com/linodes" },
 
     ],
   },

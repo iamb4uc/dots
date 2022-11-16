@@ -269,7 +269,7 @@ cmp.setup({
 local lsp_installer = require('nvim-lsp-installer')
 
 lsp_installer.on_server_ready(function(server)
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol
                                                                        .make_client_capabilities())
   local opts = {capabilities = capabilities}
   if server.name == "sumneko_lua" then
@@ -410,24 +410,26 @@ require("zen-mode").setup {
 -- Colorscheme --
 -----------------
 -- cmd("colorscheme nordfox")
-require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = true,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {},
-  dim_inactive = false,
-  transparent_mode = false,
-})
-cmd("colorscheme gruvbox")
+cmd("colorscheme moonfly")
+
+-- require("gruvbox").setup({
+--   undercurl = true,
+--   underline = true,
+--   bold = true,
+--   italic = true,
+--   strikethrough = true,
+--   invert_selection = false,
+--   invert_signs = false,
+--   invert_tabline = false,
+--   invert_intend_guides = false,
+--   inverse = true, -- invert background for search, diffs, statuslines and errors
+--   contrast = "", -- can be "hard", "soft" or empty string
+--   palette_overrides = {},
+--   overrides = {},
+--   dim_inactive = false,
+--   transparent_mode = false,
+-- })
+-- cmd("colorscheme gruvbox")
 
 -------------
 -- Staline --
