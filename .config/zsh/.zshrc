@@ -13,8 +13,11 @@
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-PROMPT="%m %F{222}➔ %f "
-RPROMPT="%d"
+PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
+setopt autocd		# Automatically cd into typed directory.
+stty stop undef		# Disable ctrl-s to freeze terminal.
+# PROMPT="%m %F{222} %f "
+# RPROMPT="%d"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=$HOME/.cache/zsh/histfile
@@ -145,6 +148,7 @@ alias xu="doas xbps-install -Su"
 # 
 # Edit file shortcuts
 alias ncon="$EDITOR ~/.config/nvim/init.lua"
+alias dox="$EDITOR ~/dox/study/sem5th/."
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

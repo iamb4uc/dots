@@ -48,6 +48,8 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 opt.mouse = "a"
+-- o.wrap = true
+opt.foldmethod = "marker"
 
 -- Map <leader> to space
 g.mapleader = ' '
@@ -410,26 +412,26 @@ require("zen-mode").setup {
 -- Colorscheme --
 -----------------
 -- cmd("colorscheme nordfox")
-cmd("colorscheme moonfly")
+-- cmd("colorscheme moonfly")
 
--- require("gruvbox").setup({
---   undercurl = true,
---   underline = true,
---   bold = true,
---   italic = true,
---   strikethrough = true,
---   invert_selection = false,
---   invert_signs = false,
---   invert_tabline = false,
---   invert_intend_guides = false,
---   inverse = true, -- invert background for search, diffs, statuslines and errors
---   contrast = "", -- can be "hard", "soft" or empty string
---   palette_overrides = {},
---   overrides = {},
---   dim_inactive = false,
---   transparent_mode = false,
--- })
--- cmd("colorscheme gruvbox")
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+cmd("colorscheme gruvbox")
 
 -------------
 -- Staline --

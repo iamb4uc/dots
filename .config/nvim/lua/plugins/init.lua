@@ -46,6 +46,9 @@ return require('packer').startup(function(use)
           'kyazdani42/nvim-web-devicons',                     -- optional, for file icons
       },
   }
+  
+  -- Vim Signature(mark suggestions)
+  use {'kshenoy/vim-signature'}
 
   -- Tree Sitter
   use { 'nvim-treesitter/nvim-treesitter' }
@@ -89,8 +92,8 @@ return require('packer').startup(function(use)
   ----------------------------------------------------------
   -- colorschemes
   use { "EdenEast/nightfox.nvim" }
-  use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
-  -- use { "ellisonleao/gruvbox.nvim" }
+  -- use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
+  use { "ellisonleao/gruvbox.nvim" }
   -- use { 'shaunsingh/oxocarbon.nvim', run = './install.sh' }
   -- use { 'tjdevries/colorbuddy.nvim' }
   -- use {

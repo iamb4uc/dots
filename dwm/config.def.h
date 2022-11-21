@@ -4,25 +4,25 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "RobotoMono Nerd Font:size=13:antialias=true:autohint=true" };
 static const char dmenufont[]       = "RobotoMono Nerd Font:size=13:antialias=true:autohint=true";
-static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#000000";
-static const char col_gray3[]       = "#ffffff";
-static const char col_gray4[]       = "#000000";
-static const char col_cyan[]        = "#ffffff";
+static const char col_gray1[]       = "#1d2021";
+static const char col_gray2[]       = "#1d2021";
+static const char col_gray3[]       = "#ebdbb2";
+static const char col_gray4[]       = "#1d2021";
+static const char col_cyan[]        = "#ebdbb2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_gray4, col_cyan,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeStatus]  = { col_gray3, col_gray1,  "#1d2021"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#1d2021"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#1d2021"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_gray4, col_cyan,  "#1d2021"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#1d2021"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -39,9 +39,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -55,9 +55,10 @@ static const Layout layouts[] = {
 static const char *nvim[] = { "/usr/local/bin/st",  "-e", "nvim", NULL };
 static const char *fb[] = { "/usr/local/bin/st",  "-e", "lfub", NULL };
 static const char *pavucontrol[] = { "/usr/local/bin/st",  "-e", "pulsemixer", NULL };
+static const char *htop[] = { "/usr/local/bin/st",  "-e", "htop", NULL };
 
 /* GUI Application */
-static const char *web[] = { "/usr/bin/qutebrowser", NULL };
+static const char *web[] = { "/usr/bin/chromium", NULL };
 static const char *ide[] = { "/usr/bin/mousepad", NULL };
 static const char *esession[] = { "/usr/bin/lxsession-logout", NULL };
 static const char *chat[] = { "/usr/bin/signal-desktop", NULL };
@@ -85,6 +86,7 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ide } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavucontrol } },
+	{ MODKEY|ShiftMask,             XK_h,      spawn,          {.v = htop } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = chat } },
 	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = nvim } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fb } },

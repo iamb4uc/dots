@@ -47,7 +47,7 @@ map('n', '<leader>G', ':Glow!<CR>')
 
 
 -- compile Latex
-map('n', '<leader>C', ':! pdflatex "%:p"<CR><CR>')
+map('n', '<leader>a', ':! pdflatex "%:p"<CR><CR>')
 
 -- Open corresponding .pdf/.html or preview
 
