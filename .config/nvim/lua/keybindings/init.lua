@@ -26,11 +26,11 @@ map('n', '<leader>k', '<C-w>k')
 map('n', '<leader>j', '<C-w>j')
 map('n', '<leader>h', '<C-w>h')
 
--- nvim tree settings
-map('n', '<C-f>', ':NvimTreeFocus<CR>')
-map('n', '<C-t>', ':NvimTreeToggle<CR>')
--- Fuzzy finder keybinding
-map('n', '<leader>o', ':FZF<CR>')
+-- Nvim Tree
+map('n', '<leader>t', ':NvimTreeToggle<CR>')
+
+-- Goyo
+map('n', '<leader>z', ':Goyo<CR>')
 
 -- New tabe finder
 map('n', '<C-n>', ':tab new<CR>')
@@ -47,8 +47,8 @@ map('n', '<leader>G', ':Glow!<CR>')
 
 
 -- compile Latex
-map('n', '<leader>a', ':! pdflatex "%:p"<CR><CR>')
+map('n', '<leader>a', ':! compiler "%:p"<CR><CR>')
 
 -- Open corresponding .pdf/.html or preview
 
-map('n', '<leader>p', ':! mupdf-x11 $(echo % | sed \'s/tex$/pdf/\') & disown<CR><CR>')
+map('n', '<leader>p', ':! opout "%:p" <CR><CR>')

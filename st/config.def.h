@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "RobotoMono Nerd Font:size=13:antialias=true:autohint=true";
+static char *font = "Iosevka Nerd Font:size=13:antialias=true:autohint=true";
 static int borderpx = 3;
 
 /*

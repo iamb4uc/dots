@@ -1,16 +1,13 @@
--- Variables
+-- Variables{{{
 local A = vim.api
 local g   = vim.g
 local o   = vim.o
 local opt = vim.opt
-local cmd = vim.cmd
+local cmd = vim.cmd-- }}}
 
---------------
--- Settings --
---------------
---------
--- UI --
---------
+-- SETTINGS --{{{
+
+-- UI{{{
 o.number = true
 o.scrolloff = 8
 o.sidescrolloff = 8
@@ -20,11 +17,9 @@ o.signcolumn = 'yes'
 o.cursorline = true
 o.termguicolors = true
 o.showmode = false
-o.showtabline = 2
+o.showtabline = 2-- }}}
 
---------
--- UX --
---------
+-- UX {{{
 o.expandtab = true
 o.smarttab = true
 o.cindent = true
@@ -48,17 +43,16 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 opt.mouse = "a"
--- o.wrap = true
-opt.foldmethod = "marker"
+o.wrap = true
+opt.foldmethod = "marker"-- }}}
 
--- Map <leader> to space
+-- Map <leader> to space{{{
 g.mapleader = ' '
-g.maplocalleader = ' '
+g.maplocalleader = ' '-- }}}}}}
 
+-- PROGRAM SETTINGS --{{{
 
------------------
--- Tree-sitter --
------------------
+-- Tree-sitter{{{
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
@@ -70,6 +64,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
         update_in_insert = true,
     }
 )
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "lua", "rust", "markdown", "python", "java", "rust", "html", "css" },
   sync_install = false,
@@ -95,11 +90,9 @@ require'nvim-treesitter.configs'.setup {
 require("nvim-autopairs").setup({
   chech_ts = true,
   map_cr = true,
-})
+})-- }}}
 
----------------
--- NVIM TREE --
----------------
+-- NVIM TREE{{{
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -116,21 +109,17 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
-})
+})-- }}}
 
-
-------------------------------
--- Lua line and Buffer line --
-------------------------------
+-- Lua line {{{
 -- require('lualine').setup({
 --     options = { theme = 'gruvbox' }
--- })
-require("bufferline").setup{}
+-- })}}}
 
+-- Bufferline{{{
+require("bufferline").setup{}-- }}}
 
----------------
--- Which-Key --
----------------
+-- Which-Key {{{
 local wk = require("which-key")
 local mappings = {
   w = {":w<CR>", "Save"},
@@ -148,11 +137,9 @@ local mappings = {
   x = {":bdelete<CR>", "Close"}
 }
 local opts = {prefix = "<leader>"}
-wk.register(mappings, opts)
+wk.register(mappings, opts)-- }}}
 
----------------
--- Telescope --
----------------
+-- Telescope{{{
 local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
@@ -202,11 +189,9 @@ require('telescope').setup {
       }
     }
   }
-}
+}-- }}}
 
---------------------------------
--- nvim-cmp (code completion) --
---------------------------------
+-- nvim-cmp{{{
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 local has_words_before = function()
@@ -266,7 +251,7 @@ cmp.setup({
       end
     })
   }
-})
+})-- }}}
 
 local lsp_installer = require('nvim-lsp-installer')
 
@@ -290,16 +275,10 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
+-- Colorizer.lua {{{
+require'colorizer'.setup()-- }}}
 
--------------------
--- Colorizer.lua --
--------------------
-require'colorizer'.setup()
-
-
----------------
--- Dashboard --
----------------
+-- Dashboard {{{
 local db = require('dashboard')
 local home = os.getenv('HOME')
 
@@ -346,13 +325,9 @@ db.custom_center = {
     shortcut = 'SPC h t'},
 }
 
-db.custom_footer = {'Life is too short to run proprietary software. - Bdale Garbee'}
+db.custom_footer = {'Life is too short to run proprietary software. - Bdale Garbee'}-- }}}
 
-
-
------------------
--- Indent-line --
------------------
+-- Indent-line{{{
 require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
     -- char = "|",
@@ -365,55 +340,44 @@ require("indent_blankline").setup {
     "jsx_self_closing_element", "try_statement", "catch_clause", "import_statement",
     "operation_type"
   }
-}
+}-- }}}
 
-
---------------------
--- Comment config --
---------------------
+-- Comment config{{{
 require('nvim_comment').setup({
   line_mapping = "<leader>cl",
   operator_mapping = "<leader>c",
   comment_empty = false
-})
+})-- }}}
 
-
----------------------
--- Twilight config --
----------------------
-require("twilight").setup {
-  {
-    dimming = {alpha = 0.25, color = {"Normal", "#ffffff"}, inactive = true},
-    context = 10,
-    treesitter = true,
-    expand = {"function", "method", "table", "if_statement"}
-  }
-}
+-- Twilight config {{{
+-- require("twilight").setup {
+--   {
+--     dimming = {alpha = 0.25, color = {"Normal", "#ffffff"}, inactive = true},
+--     context = 10,
+--     treesitter = true,
+--     expand = {"function", "method", "table", "if_statement"}
+--   }
+-- }
 
 --------------
 -- Zen-mode --
 --------------
-require("zen-mode").setup {
-  window = {
-    backdrop = 0.95,
-    width = 100,
-    height = 1.0,
-    options = {signcolumn = "no", number = false, cursorline = false}
-  },
-  plugins = {
-    options = {enabled = true, ruler = false, showcmd = false},
-    twilight = {enabled = true},
-    gitsigns = {enabled = false},
-    tmux = {enabled = false}
-  }
-}
+-- require("zen-mode").setup {
+--   window = {
+--     backdrop = 0.95,
+--     width = 100,
+--     height = 1.0,
+--     options = {signcolumn = "no", number = false, cursorline = false}
+--   },
+--   plugins = {
+--     options = {enabled = true, ruler = false, showcmd = false},
+--     twilight = {enabled = true},
+--     gitsigns = {enabled = false},
+--     tmux = {enabled = false}
+--   }
+-- }}}}
 
------------------
--- Colorscheme --
------------------
--- cmd("colorscheme nordfox")
--- cmd("colorscheme moonfly")
-
+-- Colorscheme{{{
 require("gruvbox").setup({
   undercurl = true,
   underline = true,
@@ -432,10 +396,10 @@ require("gruvbox").setup({
   transparent_mode = false,
 })
 cmd("colorscheme gruvbox")
+-- cmd("colorscheme nordfox")
+-- cmd("colorscheme moonfly")}}}
 
--------------
--- Staline --
--------------
+-- Staline{{{
 require('staline').setup {
     defaults = {
         expand_null_ls = false,  -- This expands out all the null-ls sources to be shown
@@ -484,11 +448,9 @@ require('staline').setup {
         Warn=" ",
         Hint="",
     },
-}
+}-- }}}
 
---------------
--- Stabline --
---------------
+-- Stabline{{{
 -- require('stabline').setup {
 -- 	style       = "bar", -- others: arrow, slant, bubble
 -- 	stab_left   = "┃",
@@ -504,4 +466,4 @@ require('staline').setup {
 -- 	exclude_fts = { 'NvimTree', 'dashboard', 'lir' },
 -- 	stab_start  = "",   -- The starting of stabline
 -- 	stab_end    = "",
--- }
+-- }}}}}}}

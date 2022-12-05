@@ -120,6 +120,11 @@ _G.packer_plugins = {
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/glow.nvim",
     url = "https://github.com/ellisonleao/glow.nvim"
   },
+  ["goyo.vim"] = {
+    loaded = true,
+    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/goyo.vim",
+    url = "https://github.com/junegunn/goyo.vim"
+  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
@@ -141,11 +146,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
-  ["nightfox.nvim"] = {
-    loaded = true,
-    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
-    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -222,11 +222,6 @@ _G.packer_plugins = {
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["twilight.nvim"] = {
-    loaded = true,
-    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/twilight.nvim",
-    url = "https://github.com/folke/twilight.nvim"
-  },
   ["vim-lastplace"] = {
     loaded = true,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/vim-lastplace",
@@ -246,11 +241,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
-  },
-  ["zen-mode.nvim"] = {
-    loaded = true,
-    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
-    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
