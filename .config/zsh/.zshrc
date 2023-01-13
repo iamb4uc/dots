@@ -148,7 +148,8 @@ alias xu="doas xbps-install -Su"
 # 
 # Edit file shortcuts
 alias ncon="$EDITOR ~/.config/nvim/init.lua"
-alias dox="$EDITOR ~/dox/study/sem5th/."
+alias dox="$EDITOR ~/doc/5thSemNotes/."
+alias jrn="$EDITOR ~/doc/2ndBrain/journals/main.tex"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

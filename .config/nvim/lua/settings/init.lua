@@ -21,6 +21,9 @@ o.showtabline = 2-- }}}
 
 -- UX {{{
 o.expandtab = true
+o.hlsearch = false
+o.undofile = true
+o.breakindent = true
 o.smarttab = true
 o.cindent = true
 o.autoindent = true
@@ -66,7 +69,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "rust", "markdown", "python", "java", "rust", "html", "css" },
+  ensure_installed = { "latex", "c", "lua", "rust", "markdown", "python", "java", "rust", "html", "css" },
   sync_install = false,
   auto_install = true,
   highlight = {

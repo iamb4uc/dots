@@ -8,3 +8,4 @@ setxkbmap -option caps:escape &
 slstatus &
 setbg &
 picom &
+mpd &
