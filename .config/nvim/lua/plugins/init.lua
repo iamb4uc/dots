@@ -93,14 +93,14 @@ return require('packer').startup(function(use)
   ----------------------------------------------------------
   -- colorschemes{{{
   -- use { "EdenEast/nightfox.nvim" }
-  use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
-  -- use { "ellisonleao/gruvbox.nvim" }
+  -- use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
+use { "ellisonleao/gruvbox.nvim" }
   -- use { 'shaunsingh/oxocarbon.nvim', run = './install.sh' }
   -- use { 'tjdevries/colorbuddy.nvim' }
   -- use {
   --     'taphill/gruvbox.nvim',
   --      config = "require('colorbuddy').colorscheme('gruvbox_nvim')"
-  -- }}}}
+  --  }
 
   -- Staline{{{
   use { 'tamton-aquib/staline.nvim' }-- }}}

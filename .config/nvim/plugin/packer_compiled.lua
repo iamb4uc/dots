@@ -125,6 +125,11 @@ _G.packer_plugins = {
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/goyo.vim",
     url = "https://github.com/junegunn/goyo.vim"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -221,11 +226,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/vim-lastplace",
     url = "https://github.com/farmergreg/vim-lastplace"
-  },
-  ["vim-moonfly-colors"] = {
-    loaded = true,
-    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors",
-    url = "https://github.com/bluz71/vim-moonfly-colors"
   },
   ["vim-signature"] = {
     loaded = true,

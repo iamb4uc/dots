@@ -4,11 +4,11 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 40;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Iosevka Nerd Font Mono:size=14:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Iosevka Nerd Font Mono:size=14:antialias=true:autohint=true";
+static const char *fonts[]          = { "RobotoMono Nerd Font:size=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "RobotoMono Nerd Font:size=14:antialias=true:autohint=true";
 static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#282828";
 static const char col_gray3[]       = "#f1fbc7";
@@ -36,6 +36,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "peaclock", NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
@@ -58,6 +59,7 @@ static const char *fb[] = { "/usr/local/bin/st",  "-e", "lfub", NULL };
 static const char *pavucontrol[] = { "/usr/local/bin/st",  "-e", "pulsemixer", NULL };
 static const char *htop[] = { "/usr/local/bin/st",  "-e", "htop", NULL };
 static const char *music[] = { "/usr/local/bin/st",  "-e", "ncmpcpp", NULL };
+static const char *clock[] = { "/usr/local/bin/st",  "-e", "peaclock", NULL };
 
 /* GUI Application */
 static const char *web[] = { "/usr/bin/chromium", NULL };
@@ -88,6 +90,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
   { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = music } },
+  { MODKEY,                       XK_p,      spawn,          {.v = clock } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ide } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavucontrol } },
 	{ MODKEY|ShiftMask,             XK_h,      spawn,          {.v = htop } },
