@@ -96,7 +96,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 #
 # Applications
-alias v=nvim
+alias v=$EDITOR
 alias lf=lfub
 alias nf=neofetch
 alias wal=nitrogen
@@ -108,9 +108,7 @@ alias conf="lfcd ~/.config"
 alias untar="tar -xvzf"
 alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt -x -f bestaudio/best"
-alias emacs="emacsclient -c -a 'emacs'"
-alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
-_trap_exit() { tmux kill-session -t $$; }
+alias em="emacsclient -c -a 'emacs'"
 #
 # Git
 alias gup="git pull"
@@ -150,11 +148,6 @@ alias xr="doas xbps-remove"
 alias xrc="doas xbps-remove -RcOo"
 alias xrr="doas xbps-remove -ROo"
 alias xu="doas xbps-install -Su"
-# 
-# Edit file shortcuts
-alias ncon="$EDITOR ~/.config/nvim/init.lua"
-alias dox="$EDITOR ~/doc/5thSemNotes/."
-alias jrn="$EDITOR ~/doc/2ndBrain/journals/main.tex"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -60,10 +60,11 @@ static const char *pavucontrol[] = { "/usr/local/bin/st",  "-e", "pulsemixer", N
 static const char *htop[] = { "/usr/local/bin/st",  "-e", "htop", NULL };
 static const char *music[] = { "/usr/local/bin/st",  "-e", "ncmpcpp", NULL };
 static const char *clock[] = { "/usr/local/bin/st",  "-e", "peaclock", NULL };
+static const char *ide[] = { "/usr/local/bin/st",  "-e", "emacsclient -c -a 'emacs'", NULL };
 
 /* GUI Application */
 static const char *web[] = { "/usr/bin/chromium", NULL };
-static const char *ide[] = { "/usr/bin/mousepad", NULL };
+/* static const char *ide[] = { "/usr/bin/mousepad", NULL }; */
 static const char *esession[] = { "/usr/bin/lxsession-logout", NULL };
 static const char *chat[] = { "/usr/bin/signal-desktop", NULL };
 static const char *pdf[] = { "/usr/bin/zathura", NULL };
@@ -88,9 +89,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-  { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
-  { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = music } },
-  { MODKEY,                       XK_p,      spawn,          {.v = clock } },
+    { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
+    { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = music } },
+    { MODKEY,                       XK_p,      spawn,          {.v = clock } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ide } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavucontrol } },
 	{ MODKEY|ShiftMask,             XK_h,      spawn,          {.v = htop } },

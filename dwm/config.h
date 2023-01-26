@@ -60,10 +60,11 @@ static const char *pavucontrol[] = { "/usr/local/bin/st",  "-e", "pulsemixer", N
 static const char *htop[] = { "/usr/local/bin/st",  "-e", "htop", NULL };
 static const char *music[] = { "/usr/local/bin/st",  "-e", "ncmpcpp", NULL };
 static const char *clock[] = { "/usr/local/bin/st",  "-e", "peaclock", NULL };
+static const char *ide[] = { "/usr/local/bin/st",  "-e", "emacsclient -c -a 'emacs'", NULL };
 
 /* GUI Application */
 static const char *web[] = { "/usr/bin/chromium", NULL };
-static const char *ide[] = { "/usr/bin/mousepad", NULL };
+/* static const char *ide[] = { "/usr/bin/mousepad", NULL }; */
 static const char *esession[] = { "/usr/bin/lxsession-logout", NULL };
 static const char *chat[] = { "/usr/bin/signal-desktop", NULL };
 static const char *pdf[] = { "/usr/bin/zathura", NULL };
