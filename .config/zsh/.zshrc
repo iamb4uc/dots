@@ -108,6 +108,7 @@ alias conf="lfcd ~/.config"
 alias untar="tar -xvzf"
 alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt -x -f bestaudio/best"
+alias emacs="emacsclient -c -a 'emacs'"
 alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
 _trap_exit() { tmux kill-session -t $$; }
 #

@@ -2,11 +2,11 @@
 #
 # Adds '~/.local/bin' to $PATH
 #
-export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/personal"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/personal:$HOME/.emacs.d/bin"
 
 # Default Programs
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="emacsclient -c -a 'emacs'"
+export VISUAL="emacsclient -c -a 'emacs'"
 export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
