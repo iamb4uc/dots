@@ -19,7 +19,7 @@
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-# set icons
+set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml:*.out:*.toc"
 set cleaner '~/.config/lf/cleaner'
@@ -115,7 +115,7 @@ cmd bulkrename ${{
 			a="$(cat $index | sed "${counter}q;d")"
 			b="$(cat $index_edit | sed "${counter}q;d")"
 			counter=$(($counter+1))
-			
+
 			[ "$a" = "$b" ] && continue
 			[ -e "$b" ] && echo "File exists: $b" && continue
 			mv "$a" "$b"

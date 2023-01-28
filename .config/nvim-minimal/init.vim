@@ -7,16 +7,18 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	autocmd VimEnter * PlugInstall
 endif
 
-map <leader><leader>  :keepp /<++><CR>ca<
-imap <leader><leader> <esc>:keepp /<++><CR>ca<
-
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 	Plug 'tpope/vim-surround'
+	Plug 'Yggdroot/indentLine'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'rafi/awesome-vim-colorschemes'
+	Plug 'ryanoasis/vim-devicons'
 	Plug 'preservim/nerdtree'
 	Plug 'junegunn/goyo.vim'
 	Plug 'jreybert/vimagit'
-	Plug 'vimwiki/vimwiki'
 	Plug 'vim-airline/vim-airline'
+	Plug 'luochen1990/rainbow'
 	Plug 'tpope/vim-commentary'
 	Plug 'ap/vim-css-color'
 call plug#end()
@@ -77,15 +79,23 @@ set noshowcmd
 " Replace ex mode with gq
 	map Q gq
 
-"  Exit shaving all the changes
+"  Save all the changes
+	map <leader>fs :w<CR>
+	map <leader>W :wall<CR>
+
+"  Just Exit
+	map <leader>qq :q<CR>
+	map <leader>Qq :q!<CR>
+
+"  Save and exit
 	map <leader>wq :wq<CR>
 
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck -x %<CR>
 
 " Open my bibliography file in split
-	map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
+	map <leader>bn :bnext<CR>
+	map <leader>bp :bprevious<CR>
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
@@ -99,22 +109,9 @@ set noshowcmd
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
 
-" Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	map <leader>v :VimwikiIndex<CR>
-	let g:vimwiki_list = [{'path': '~/.local/share/nvim/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-	autocmd BufRead,BufNewFile *.tex set filetype=tex
-
 " Save file as sudo on files that require root permission
 	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" Enable Goyo by default for mutt writing
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save. & reset cursor position
  	autocmd BufWritePre * let currPos = getpos(".")
@@ -128,8 +125,6 @@ set noshowcmd
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
-" Recompile dwmblocks on config edit.
-	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid -f dwmblocks }
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff
@@ -154,7 +149,3 @@ function! ToggleHiddenAll()
     endif
 endfunction
 nnoremap <leader>h :call ToggleHiddenAll()<CR>
-" Load command shortcuts generated from bm-dirs and bm-files via shortcuts script.
-" Here leader is ";".
-" So ":vs ;cfz" will expand into ":vs /home/<user>/.config/zsh/.zshrc"
-" if typed fast without the timeout.

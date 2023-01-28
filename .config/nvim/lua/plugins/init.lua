@@ -92,6 +92,7 @@ return require('packer').startup(function(use)
   --                   Extras/Cosmetics                   --
   ----------------------------------------------------------
   -- colorschemes{{{
+  -- use { "NTBBloodbath/doom-one" }
   -- use { "EdenEast/nightfox.nvim" }
   -- use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
 use { "ellisonleao/gruvbox.nvim" }
@@ -138,5 +139,6 @@ use { "ellisonleao/gruvbox.nvim" }
   
   -- Goyo instead of Zen-mode{{{
   use { "junegunn/goyo.vim" }-- }}}
+
 
 end)

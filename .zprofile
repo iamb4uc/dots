@@ -22,14 +22,14 @@ fi
 
 
 # Default Programs
-export EDITOR="emacsclient -c -a ''"
-export VISUAL="emacsclient -c -a emacs"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
 export FILE="lf"
 
-# ~/ XDG STANDARDS 
+# ~/ XDG STANDARDS
 export ZDOTDIR="$HOME/.config/zsh"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DOWNLOAD_DIR="$HOME/dl"
