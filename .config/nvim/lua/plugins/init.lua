@@ -72,7 +72,17 @@ return require('packer').startup(function(use)
       requires = {
           'nvim-lua/plenary.nvim'
     },
-  }-- }}}
+  }
+
+  -- Emoji Extension
+  use {
+    'xiyaowong/telescope-emoji',
+    requires = {
+      'nvim-telescope/telescope.nvim'
+    },
+  }
+
+  -- }}}
 
   -- Nvim Comments{{{
   use { "terrortylor/nvim-comment" }-- }}}
@@ -91,52 +101,53 @@ return require('packer').startup(function(use)
   ----------------------------------------------------------
   --                   Extras/Cosmetics                   --
   ----------------------------------------------------------
-  -- colorschemes{{{
-  -- use { "NTBBloodbath/doom-one" }
-  -- use { "EdenEast/nightfox.nvim" }
-  -- use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
-use { "ellisonleao/gruvbox.nvim" }
-  -- use { 'shaunsingh/oxocarbon.nvim', run = './install.sh' }
-  -- use { 'tjdevries/colorbuddy.nvim' }
-  -- use {
-  --     'taphill/gruvbox.nvim',
-  --      config = "require('colorbuddy').colorscheme('gruvbox_nvim')"
-  --  }
+  -- colorschemes
+  use { "ellisonleao/gruvbox.nvim" }
+  use({
+    'NTBBloodbath/doom-one.nvim',
+    setup = function()
+        -- Add color to cursor
+		vim.g.doom_one_cursor_coloring = false
+		-- Set :terminal colors
+		vim.g.doom_one_terminal_colors = true
+		-- Enable italic comments
+		vim.g.doom_one_italic_comments = false
+		-- Enable TS support
+		vim.g.doom_one_enable_treesitter = true
+		-- Color whole diagnostic text or only underline
+        vim.g.doom_one_diagnostics_text_color = false
+		-- Enable transparent background
+		vim.g.doom_one_transparent_background = false
+
+        -- Pumblend transparency
+		vim.g.doom_one_pumblend_enable = false
+		vim.g.doom_one_pumblend_transparency = 20
+
+        -- Plugins integration
+		vim.g.doom_one_plugin_neorg = true
+		vim.g.doom_one_plugin_barbar = false
+		vim.g.doom_one_plugin_telescope = false
+		vim.g.doom_one_plugin_neogit = true
+		vim.g.doom_one_plugin_nvim_tree = true
+		vim.g.doom_one_plugin_dashboard = true
+		vim.g.doom_one_plugin_startify = true
+		vim.g.doom_one_plugin_whichkey = true
+		vim.g.doom_one_plugin_indent_blankline = true
+		vim.g.doom_one_plugin_vim_illuminate = true
+		vim.g.doom_one_plugin_lspsaga = false
+	end,
+	config = function()
+        vim.cmd("colorscheme doom-one")
+    end,
+})
+
 
   -- Staline{{{
   use { 'tamton-aquib/staline.nvim' }-- }}}
 
-  -- Lualine{{{
-  -- use {
-  --     'nvim-lualine/lualine.nvim',
-  --     requires = {
-  --         'kyazdani42/nvim-web-devicons',
-  --         opt = true,
-  --         options = {
-  --             theme = 'gruvbox'
-  --     }
-  --   }
-  -- }}}}
-
-  -- Bufferline{{{
-  use {
-      'akinsho/bufferline.nvim',
-      tag = "v2.*",
-      requires = 'kyazdani42/nvim-web-devicons'
-  }-- }}}
-
-  -- Dashboard{{{
-  use { 'glepnir/dashboard-nvim' }-- }}}
-
   -- Indent-Blankline{{{
   use { "lukas-reineke/indent-blankline.nvim" }-- }}}
 
-  -- Twilight{{{
-  -- use { "folke/twilight.nvim" }}}}
-  
-  -- -- Zen-mode{{{
-  -- use { "folke/zen-mode.nvim" }}}}
-  
   -- Goyo instead of Zen-mode{{{
   use { "junegunn/goyo.vim" }-- }}}
 

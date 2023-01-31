@@ -17,7 +17,6 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'preservim/nerdtree'
 	Plug 'junegunn/goyo.vim'
 	Plug 'jreybert/vimagit'
-	Plug 'vim-airline/vim-airline'
 	Plug 'luochen1990/rainbow'
 	Plug 'tpope/vim-commentary'
 	Plug 'ap/vim-css-color'

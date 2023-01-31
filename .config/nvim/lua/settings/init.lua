@@ -12,7 +12,7 @@ o.number = true
 o.scrolloff = 8
 o.sidescrolloff = 8
 o.numberwidth = 2
-o.relativenumber = true
+o.relativenumber = false -- I am not a hobo to use relative numbers
 o.signcolumn = 'yes'
 o.cursorline = true
 o.termguicolors = true
@@ -69,7 +69,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "latex", "c", "lua", "rust", "markdown", "python", "java", "rust", "html", "css" },
+  ensure_installed = { "latex", "c", "lua", "markdown", "python", "java", "html", "css" },
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -96,6 +96,7 @@ require("nvim-autopairs").setup({
 })-- }}}
 
 -- NVIM TREE{{{
+
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -110,17 +111,9 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
 })-- }}}
-
--- Lua line {{{
--- require('lualine').setup({
---     options = { theme = 'gruvbox' }
--- })}}}
-
--- Bufferline{{{
-require("bufferline").setup{}-- }}}
 
 -- Which-Key {{{
 local wk = require("which-key")
@@ -191,8 +184,25 @@ require('telescope').setup {
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
       }
     }
+  },
+  extensions = {
+    emoji = {
+      action = function(emoji)
+        -- argument emoji is a table.
+        -- {name="", value="", cagegory="", description=""}
+
+        vim.fn.setreg("*", emoji.value)
+        print([[Press p or "*p to paste this emoji]] .. emoji.value)
+
+        -- insert emoji when picked
+        -- vim.api.nvim_put({ emoji.value }, 'c', false, true)
+      end,
+    }
   }
-}-- }}}
+}
+
+require("telescope").load_extension("emoji")
+-- }}}
 
 -- nvim-cmp{{{
 local cmp = require'cmp'
@@ -281,54 +291,7 @@ end)
 -- Colorizer.lua {{{
 require'colorizer'.setup()-- }}}
 
--- Dashboard {{{
-local db = require('dashboard')
-local home = os.getenv('HOME')
-
-db.default_executive = 'telescope'
-db.default_banner = {
-[[ =================     ===============     ===============   ========  ======== ]],
-[[ \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . // ]],
-[[ ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .|| ]],
-[[ || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . || ]],
-[[ ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .|| ]],
-[[ || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . || ]],
-[[ ||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .|| ]],
-[[ || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . || ]],
-[[ ||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.|| ]],
-[[ ||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `|| ]],
-[[ ||    `'         || ||         `'    || ||    `'         || ||   | \  / |   || ]],
-[[ ||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   || ]],
-[[ ||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   || ]],
-[[ ||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   || ]],
-[[ ||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   || ]],
-[[ ||.=='    _-'                                                     `' |  /==.|| ]],
-[[ =='    _-'                        N E O V I M                         \/   `== ]],
-[[ \   _-'                                                                `-_   / ]],
-[[  `''                                                                      `''  ]],
-[[                                                                                ]],
-}
-
-db.custom_center = {
-    {icon = '  ',
-    desc = 'Find recent files                       ',
-    action = 'Telescope oldfiles',
-    shortcut = 'SPC f r'},
-    {icon = '  ',
-    desc = 'Find files                              ',
-    action = 'Telescope find_files find_command=rg,--hidden,--files',
-    shortcut = 'SPC f f'},
-    {icon = '  ',
-    desc = 'Find word                               ',
-    action = 'Telescope live_grep',
-    shortcut = 'SPC f w'},
-    {icon = '  ',
-    desc = 'Load new theme                          ',
-    action = 'Telescope colorscheme',
-    shortcut = 'SPC h t'},
-}
-
-db.custom_footer = {'Life is too short to run proprietary software. - Bdale Garbee'}-- }}}
+-- DASHBOARD WAS HERE, but due these mf chainging their code base every 15 mins I decided to remove this shit.
 
 -- Indent-line{{{
 require("indent_blankline").setup {
@@ -352,92 +315,27 @@ require('nvim_comment').setup({
   comment_empty = false
 })-- }}}
 
--- Twilight config {{{
--- require("twilight").setup {
---   {
---     dimming = {alpha = 0.25, color = {"Normal", "#ffffff"}, inactive = true},
---     context = 10,
---     treesitter = true,
---     expand = {"function", "method", "table", "if_statement"}
---   }
--- }
-
---------------
--- Zen-mode --
---------------
--- require("zen-mode").setup {
---   window = {
---     backdrop = 0.95,
---     width = 100,
---     height = 1.0,
---     options = {signcolumn = "no", number = false, cursorline = false}
---   },
---   plugins = {
---     options = {enabled = true, ruler = false, showcmd = false},
---     twilight = {enabled = true},
---     gitsigns = {enabled = false},
---     tmux = {enabled = false}
---   }
--- }}}}
-
 -- Colorscheme{{{
--- require("gruvbox").setup({
---   undercurl = true,
---   underline = true,
---   bold = true,
---   italic = true,
---   strikethrough = true,
---   invert_selection = false,
---   invert_signs = false,
---   invert_tabline = false,
---   invert_intend_guides = false,
---   inverse = true, -- invert background for search, diffs, statuslines and errors
---   contrast = "hard", -- can be "hard", "soft" or empty string
---   palette_overrides = {},
---   overrides = {},
---   dim_inactive = false,
---   transparent_mode = false,
--- })
--- o.background= "dark"
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "soft", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+o.background= "dark"
 -- cmd("colorscheme gruvbox")
 
-use({
-    'NTBBloodbath/doom-one.nvim',
-    setup = function()
-        -- Add color to cursor
-		vim.g.doom_one_cursor_coloring = false
-		-- Set :terminal colors
-		vim.g.doom_one_terminal_colors = true
-		-- Enable italic comments
-		vim.g.doom_one_italic_comments = false
-		-- Enable TS support
-		vim.g.doom_one_enable_treesitter = true
-		-- Color whole diagnostic text or only underline
-        vim.g.doom_one_diagnostics_text_color = false
-		-- Enable transparent background
-		vim.g.doom_one_transparent_background = false
-
-        -- Pumblend transparency
-		vim.g.doom_one_pumblend_enable = false
-		vim.g.doom_one_pumblend_transparency = 20
-
-        -- Plugins integration
-		vim.g.doom_one_plugin_neorg = true
-		vim.g.doom_one_plugin_barbar = false
-		vim.g.doom_one_plugin_telescope = false
-		vim.g.doom_one_plugin_neogit = true
-		vim.g.doom_one_plugin_nvim_tree = true
-		vim.g.doom_one_plugin_dashboard = true
-		vim.g.doom_one_plugin_startify = true
-		vim.g.doom_one_plugin_whichkey = true
-		vim.g.doom_one_plugin_indent_blankline = true
-		vim.g.doom_one_plugin_vim_illuminate = true
-		vim.g.doom_one_plugin_lspsaga = false
-	end,
-	config = function()
-        vim.cmd("colorscheme doom-one")
-    end,
-})
 
 -- cmd("colorscheme nordfox")
 -- cmd("colorscheme moonfly") -- }}}
@@ -449,7 +347,7 @@ require('staline').setup {
         left_separator  = "",
         right_separator = "",
         full_path       = false,
-        line_column     = "[%l/%L] :%c 並%p%% ", -- `:h stl` to see all flags.
+        line_column     = "[%l/%L] :%c 並%p%% ", -- `:h stl` to see all flags.
 
         fg              = "#000000",  -- Foreground text color.
         bg              = "none",     -- Default background is transparent.
@@ -493,20 +391,4 @@ require('staline').setup {
     },
 }-- }}}
 
--- Stabline{{{
--- require('stabline').setup {
--- 	style       = "bar", -- others: arrow, slant, bubble
--- 	stab_left   = "┃",
--- 	stab_right  = " ",
--- 
--- 	-- fg          = Default is fg of "Normal".
--- 	-- bg          = Default is bg of "Normal".
--- 	inactive_bg = "#1e2127",
--- 	inactive_fg = "#aaaaaa",
--- 	-- stab_bg     = Default is darker version of bg.,
--- 
--- 	font_active = "bold",
--- 	exclude_fts = { 'NvimTree', 'dashboard', 'lir' },
--- 	stab_start  = "",   -- The starting of stabline
--- 	stab_end    = "",
 -- }}}}}}}
