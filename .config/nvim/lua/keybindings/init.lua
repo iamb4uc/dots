@@ -6,7 +6,7 @@ local function map(m, k, v)
 end
 
 -- Save files
-map('n', '<leader>fs', ':w<CR>')
+map('n', '<leader>ww', ':w<CR>')
 map('n', '<leader>W', ':wall<CR>')
 
 -- Quite

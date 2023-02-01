@@ -73,15 +73,6 @@ return require('packer').startup(function(use)
           'nvim-lua/plenary.nvim'
     },
   }
-
-  -- Emoji Extension
-  use {
-    'xiyaowong/telescope-emoji',
-    requires = {
-      'nvim-telescope/telescope.nvim'
-    },
-  }
-
   -- }}}
 
   -- Nvim Comments{{{

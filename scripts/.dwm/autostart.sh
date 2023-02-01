@@ -21,7 +21,6 @@ slstatus &
 setbg &
 picom &
 syncthing &
-spdstart &
 $(which emacs) --daemon &
 # redshift &
 mpd &

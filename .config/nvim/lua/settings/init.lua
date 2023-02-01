@@ -12,11 +12,12 @@ o.number = true
 o.scrolloff = 8
 o.sidescrolloff = 8
 o.numberwidth = 2
-o.relativenumber = false -- I am not a hobo to use relative numbers
+o.relativenumber = false -- I am not a hobo to use relative numbers but still if you are one you can change it to "true"
 o.signcolumn = 'yes'
 o.cursorline = true
 o.termguicolors = true
 o.showmode = false
+o.background= "dark"
 o.showtabline = 2-- }}}
 
 -- UX {{{
@@ -46,12 +47,14 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 opt.mouse = "a"
-o.wrap = true
-opt.foldmethod = "marker"-- }}}
+o.wrap = false
+opt.foldmethod = "marker"
+-- }}}
 
 -- Map <leader> to space{{{
 g.mapleader = ' '
-g.maplocalleader = ' '-- }}}}}}
+g.maplocalleader = ' '
+-- }}}}}}
 
 -- PROGRAM SETTINGS --{{{
 
@@ -184,24 +187,8 @@ require('telescope').setup {
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
       }
     }
-  },
-  extensions = {
-    emoji = {
-      action = function(emoji)
-        -- argument emoji is a table.
-        -- {name="", value="", cagegory="", description=""}
-
-        vim.fn.setreg("*", emoji.value)
-        print([[Press p or "*p to paste this emoji]] .. emoji.value)
-
-        -- insert emoji when picked
-        -- vim.api.nvim_put({ emoji.value }, 'c', false, true)
-      end,
-    }
   }
 }
-
-require("telescope").load_extension("emoji")
 -- }}}
 
 -- nvim-cmp{{{
@@ -333,7 +320,6 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = false,
 })
-o.background= "dark"
 -- cmd("colorscheme gruvbox")
 
 

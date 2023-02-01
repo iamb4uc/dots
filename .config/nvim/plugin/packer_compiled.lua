@@ -214,11 +214,6 @@ _G.packer_plugins = {
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/staline.nvim",
     url = "https://github.com/tamton-aquib/staline.nvim"
   },
-  ["telescope-emoji"] = {
-    loaded = true,
-    path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/telescope-emoji",
-    url = "https://github.com/xiyaowong/telescope-emoji"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/iamb4uc/.local/share/nvim/site/pack/packer/start/telescope.nvim",

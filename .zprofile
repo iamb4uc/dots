@@ -1,6 +1,7 @@
 # Profile file. Runs on login. Environment variables are set here.
 #
 # Adds '~/.local/bin' to $PATH
+# Adds '~/.bin' to $PATH
 #
 # PATH
 if [ -d "$HOME/.bin" ] ;
@@ -10,16 +11,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
-
-if [ -d "$HOME/.emacs.d/bin" ] ;
-  then PATH="$HOME/.emacs.d/bin:$PATH"
-fi
-
-if [ -d "$HOME/Applications" ] ;
-  then PATH="$HOME/Applications:$PATH"
-fi
-
-
 
 # Default Programs
 export EDITOR="nvim"
