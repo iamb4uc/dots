@@ -1,7 +1,7 @@
 # vim: filetype=conf
 
 ncmpcpp_directory = "~/.config/ncmpcpp"
-lyrics_directory = "~/.local/share/lyrics"
+# lyrics_directory = "~/.local/share/lyrics"
 mpd_music_dir = "~/Music"
 message_delay_time = "1"
 visualizer_type = "spectrum"
@@ -19,14 +19,14 @@ browser_display_mode = columns
 progressbar_look = ->
 media_library_primary_tag = album_artist
 media_library_albums_split_by_date = no
-startup_screen = "media_library"
-display_volume_level = no
+# startup_screen = "media_library"
+display_volume_level = yes
 ignore_leading_the = yes
-external_editor = emacs
+external_editor = nvim
 use_console_editor = yes
 empty_tag_color = magenta
 main_window_color = white
 progressbar_color = white
 progressbar_elapsed_color = blue:b
 statusbar_color = red
-statusbar_time_color = cyan:b
+statusbar_time_color = red:b

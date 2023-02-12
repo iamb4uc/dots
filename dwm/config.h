@@ -7,8 +7,8 @@ static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=11:antialias=true:autohint=true" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=11:antialias=true:autohint=true";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=11:antialias=true:autohint=true", "NotoColorEmoji:size=11:antialias=true:autohint=true" };
+static const char dmenufont[]       = { "JetBrainsMono Nerd Font:size=11:antialias=true:autohint=true" };
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -26,7 +26,6 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-/* needs noto-fonts-cjk installed */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
@@ -54,19 +53,16 @@ static const Layout layouts[] = {
 };
 
 /* Teminal Application */
-static const char *nvim[] = { "/usr/local/bin/st",  "-e", "nvim", NULL };
-static const char *fb[] = { "/usr/local/bin/st",  "-e", "lfub", NULL };
-static const char *pavucontrol[] = { "/usr/local/bin/st",  "-e", "pulsemixer", NULL };
-static const char *htop[] = { "/usr/local/bin/st",  "-e", "htop", NULL };
-static const char *music[] = { "/usr/local/bin/st",  "-e", "ncmpcpp", NULL };
-static const char *clock[] = { "/usr/local/bin/st",  "-e", "peaclock", NULL };
-static const char *ide[] = { "/usr/local/bin/st",  "-e", "emacsclient -c -a 'emacs'", NULL };
+static const char *nvim[] = { "st",  "-e", "nvim", NULL };
+static const char *fb[] = { "st",  "-e", "lfub", NULL };
+static const char *mixer[] = { "st",  "-e", "pulsemixer", NULL };
+static const char *htop[] = { "st",  "-e", "htop", NULL };
+static const char *music[] = { "st",  "-e", "ncmpcpp", NULL };
+static const char *esession[] = { "sysact", NULL };
 
 /* GUI Application */
 static const char *web[] = { "/usr/bin/chromium", NULL };
-/* static const char *ide[] = { "/usr/bin/mousepad", NULL }; */
-static const char *esession[] = { "/usr/bin/lxsession-logout", NULL };
-static const char *chat[] = { "/usr/bin/signal-desktop", NULL };
+static const char *ide[] = { "/usr/bin/mousepad", NULL };
 static const char *pdf[] = { "/usr/bin/zathura", NULL };
 static const char *sshot[] = { "/usr/bin/flameshot", "gui", NULL };
 
@@ -82,25 +78,23 @@ static const char *sshot[] = { "/usr/bin/flameshot", "gui", NULL };
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
-        { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = music } },
-    	{ MODKEY,                       XK_p,      spawn,          {.v = clock } },
+  { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web } },
+  { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = music } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ide } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavucontrol } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = mixer } },
 	{ MODKEY|ShiftMask,             XK_h,      spawn,          {.v = htop } },
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = chat } },
 	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = nvim } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fb } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = pdf } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = sshot } },
-	{ MODKEY,                       XK_x,      spawn,          {.v = esession } },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = esession } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -134,7 +128,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* { MODKEY|ShiftMask,             XK_q,      quit,           {0} }, */
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 };
 

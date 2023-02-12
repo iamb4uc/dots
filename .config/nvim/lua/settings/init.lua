@@ -320,7 +320,7 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = false,
 })
--- cmd("colorscheme gruvbox")
+cmd("colorscheme gruvbox")
 
 
 -- cmd("colorscheme nordfox")
