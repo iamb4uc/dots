@@ -108,7 +108,7 @@ alias conf="lfcd ~/.config"
 alias untar="tar -xvzf"
 alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt -x -f bestaudio/best"
-alias em="emacsclient -c -a 'emacs'"
+alias peaclock="peaclock --config-dir ~/.config/peaclock"
 #
 # Git
 alias gup="git pull"
@@ -151,6 +151,7 @@ alias xu="doas xbps-install -Su"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+cowsay $(fortune -s)
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0282828" #bg0

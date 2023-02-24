@@ -18,7 +18,7 @@ export VISUAL="nvim"
 export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
-export FILE="lf"
+export FILEBROWSER="lf"
 
 # ~/ XDG STANDARDS
 export ZDOTDIR="$HOME/.config/zsh"
