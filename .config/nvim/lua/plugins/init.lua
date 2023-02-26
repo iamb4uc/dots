@@ -19,5 +19,6 @@ require('packer').startup(function(use)
   use 'folke/zen-mode.nvim'
   use { 'goolord/alpha-nvim', requires = { 'nvim-tree/nvim-web-devicons' }, config = function () require'alpha'.setup(require'alpha.themes.startify'.config) end }
   use 'folke/zen-mode.nvim'
+  use "chip/telescope-software-licenses.nvim"
 
 end)

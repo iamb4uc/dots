@@ -1,5 +1,6 @@
 local actions = require('telescope.actions')
-require('telescope').setup {
+local telescope= require('telescope')
+telescope.setup {
   defaults = {
     layout_config = {
       width = 0.75,
@@ -48,4 +49,6 @@ require('telescope').setup {
     }
   }
 }
-pcall(require('telescope').load_extension, 'fzf')
+
+telescope.load_extension("software-licenses")
+pcall(telescope.load_extension, 'fzf')
