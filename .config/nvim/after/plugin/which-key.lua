@@ -8,9 +8,8 @@ local mappings = {
   bn = {":bn<CR>", "Next buffer"},
   vs = {":vsplit<CR>", "Vsplit"},
   hs = {":split<CR>", "Hsplit"},
-  f = {":Telescope find_files<CR>", "Find file"},
-  r = {":Telescope live_grep<CR>", "Grep"},
-  o = {":FZF<CR>", "Fuzzy Finder"},
+  ff = {":Telescope find_files<CR>", "Find file"},
+  fr = {":Telescope live_grep<CR>", "Grep"},
   x = {":bdelete<CR>", "Close"}
 }
 local opts = {prefix = "<leader>"}

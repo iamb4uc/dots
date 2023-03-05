@@ -20,7 +20,7 @@ map('n', '<leader>j', '<C-w>j')
 map('n', '<leader>h', '<C-w>h')
 
 -- Netrw
-map('n', '<leader>n', ':Ex<CR>')
+map('n', '<leader>n', ':Vexplore<CR>')
 
 -- Goyo
 map('n', '<leader>z', ':ZenMode<CR>')

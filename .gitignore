@@ -1,4 +1,3 @@
 .config/nvim/plugin
 .config/mpd/playlists
-.config/nvim-minimal/plugged
-.config/nvim-minimal/autoload
+.config/mpdnotify/pid
