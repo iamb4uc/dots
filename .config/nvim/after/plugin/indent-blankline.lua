@@ -2,7 +2,7 @@ require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
     -- char = "|",
     buftype_exclude = { "terminal" },
-    filetype_exclude = { "alpha", "mason.nvim", "netrw", "help" },
+    filetype_exclude = { "alpha", "mason", "netrw", "help", "Packer", "wiki" },
     show_current_context = true,
     context_patterns = {
     "class", "return", "function", "method", "^if", "^while", "jsx_element", "^for", "^object",

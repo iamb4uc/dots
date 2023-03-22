@@ -10,7 +10,7 @@ require('zen-mode').setup({
     -- by default, no options are changed for the Zen window
     -- uncomment any of the options below, or add other vim.wo options you want to apply
     options = {
-      -- signcolumn = "no", -- disable signcolumn
+      signcolumn = "no", -- disable signcolumn
       number = false, -- disable number column
       relativenumber = false, -- disable relative numbers
       cursorline = false, -- disable cursorline
@@ -18,10 +18,6 @@ require('zen-mode').setup({
       -- foldcolumn = "0", -- disable fold column
       -- list = false, -- disable whitespace characters
     },
-  },
-  plugins = {
-    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-    gitsigns = { enabled = false }, -- disables git signs
   },
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)

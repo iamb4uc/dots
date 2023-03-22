@@ -20,9 +20,9 @@ map('n', '<leader>j', '<C-w>j')
 map('n', '<leader>h', '<C-w>h')
 
 -- Netrw
-map('n', '<leader>n', ':Vexplore<CR>')
+map('n', '<leader>n', ':NvimTreeToggle<CR>')
 
--- Goyo
+-- ZenMode
 map('n', '<leader>z', ':ZenMode<CR>')
 
 -- Telescope Keybindings
@@ -35,6 +35,9 @@ map('n', '<leader>ht', builtin.colorscheme)
 
 -- compiler stuff by The Tech gent Luke Smith
 map('n', '<leader>a', ':! compiler "%:p"<CR><CR>')
+
+-- Insert into empty space
+map('n', '<leader><leader>', ':keepp /<++><CR>')
 
 -- Open corresponding .pdf/.html or preview
 map('n', '<leader>p', ':! opout "%:p" <CR><CR>')

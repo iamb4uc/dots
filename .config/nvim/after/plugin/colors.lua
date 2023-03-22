@@ -9,13 +9,14 @@ require("gruvbox").setup({
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "soft", -- can be "hard", "soft" or empty string
+  contrast = "light", -- can be "hard", "soft" or empty string
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
-  transparent_mode = true,
-  disable_background = true,
+  transparent_mode = false,
+  disable_background = false,
 })
+
 vim.cmd("colorscheme gruvbox")
 
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
