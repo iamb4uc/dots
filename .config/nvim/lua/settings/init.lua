@@ -40,10 +40,13 @@ opt.splitbelow = true
 opt.mouse = "a"
 opt.wrap = false
 opt.foldmethod = "marker"
+opt.scl = "auto"
 
 g.mapleader = ' '
 g.maplocalleader = ' '
 g.vimwiki_folding = 'custom'
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
+
+vim.api.nvim_set_hl(0, 'SignColumn', { clear })
 
