@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+killall redshift &
 
 rm $HOME/.config/mpdnotify/pid &
 pulseaudio -D &
@@ -10,4 +12,5 @@ setbg &
 picom &
 syncthing &
 mpdnotify start &
+redshift &
 mpd &

@@ -56,6 +56,7 @@ require('packer').startup(function(use)
   use 'folke/zen-mode.nvim'
   use 'goolord/alpha-nvim'
   use "chip/telescope-software-licenses.nvim"
+  use 'AlexvZyl/nordic.nvim'
   use 'NTBBloodbath/doom-one.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
