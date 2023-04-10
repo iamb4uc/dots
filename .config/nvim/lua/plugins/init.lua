@@ -6,7 +6,6 @@ require('packer').startup(function(use)
     requires = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'j-hui/fidget.nvim',
       'folke/neodev.nvim',
     },
   }
@@ -16,7 +15,8 @@ require('packer').startup(function(use)
     requires = {
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip'
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-buffer'
     },
   }
 
@@ -56,8 +56,6 @@ require('packer').startup(function(use)
   use 'folke/zen-mode.nvim'
   use 'goolord/alpha-nvim'
   use "chip/telescope-software-licenses.nvim"
-  use 'AlexvZyl/nordic.nvim'
-  use 'NTBBloodbath/doom-one.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
 
