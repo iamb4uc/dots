@@ -21,7 +21,7 @@ map('n', '<leader>j', '<C-w>j')
 map('n', '<leader>h', '<C-w>h')
 
 -- Netrw
-map('n', '<leader>n', ':NvimTreeToggle<CR>')
+map('n', '<leader>n', ':Ex<CR>')
 
 -- ZenMode
 map('n', '<leader>z', ':ZenMode<CR>')
