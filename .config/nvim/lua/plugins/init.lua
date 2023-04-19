@@ -58,8 +58,7 @@ require('packer').startup(function(use)
   use 'vimwiki/vimwiki'
   use 'tpope/vim-fugitive'
   use 'folke/zen-mode.nvim'
-  use 'goolord/alpha-nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
+  -- use 'nvim-tree/nvim-tree.lua'
+  -- use 'nvim-tree/nvim-web-devicons'
 
 end)
