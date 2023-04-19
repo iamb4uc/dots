@@ -29,7 +29,6 @@ require('packer').startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use 'ellisonleao/gruvbox.nvim'
-  use 'tamton-aquib/staline.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'numToStr/Comment.nvim'
   use 'windwp/nvim-autopairs'
@@ -50,12 +49,16 @@ require('packer').startup(function(use)
     cond = vim.fn.executable 'make' == 1
   }
 
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
   use 'folke/which-key.nvim'
   use 'vimwiki/vimwiki'
   use 'tpope/vim-fugitive'
   use 'folke/zen-mode.nvim'
   use 'goolord/alpha-nvim'
-  use "chip/telescope-software-licenses.nvim"
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
 
