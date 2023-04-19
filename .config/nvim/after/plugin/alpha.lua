@@ -1,36 +1,53 @@
 local alpha = require'alpha'
 local dashboard = require'alpha.themes.dashboard'
+local handle = assert(io.popen('fortune -s'))
+local fortune = handle:read("*all")
+
 dashboard.section.header.val = {
-  [[]],
-  [[=================     ===============     ===============   ========  ========]],
-  [[\\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //]],
-  [[||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||]],
-  [[|| . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||]],
-  [[||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||]],
-  [[|| . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||]],
-  [[||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||]],
-  [[|| . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||]],
-  [[||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||]],
-  [[||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||]],
-  [[||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||]],
-  [[||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||]],
-  [[||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||]],
-  [[||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||]],
-  [[||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||]],
-  [[||.=='    _-'                                                     `' |  /==.||]],
-  [[=='    _-'                        N E O V I M                         \/   `==]],
-  [[\   _-'                                                                `-_   /]],
-  [[ `''                                                                      ``' ]],
-  [[                          A minimal config by iamb4uc                         ]],
-  [[]],
-}
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[　　　 　　/＾>》, -―‐‐＜＾}]],
+    [[　　　 　./:::/,≠´::::::ヽ.]],
+    [[　　　　/::::〃::::／}::丿ハ]],
+    [[　　　./:::::i{l|／　ﾉ／ }::}]],
+    [[　　 /:::::::瓜イ＞　´＜ ,:ﾉ]],
+    [[　 ./::::::|ﾉﾍ.{､　(_ﾌ_ノﾉイ＿]],
+    [[　 |:::::::|／}｀ｽ /          /]],
+    [[.　|::::::|(_:::つ/ ThinkPad /　neovim!]],
+    [[.￣￣￣￣￣￣￣＼/＿＿＿＿＿/￣￣￣￣￣]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+    [[]],
+  }
+
 dashboard.section.buttons.val = {
-  dashboard.button( "SPC fo", "Last session" , ":Telescope oldfiles<CR>"),
-  dashboard.button( "SPC N",  "New file" , ":tabnew<CR>"),
-  dashboard.button( "SPC ff", "Find file" , ":Telescope find_files<CR>"),
-  dashboard.button( "SPC fg", "Find word" , ":Telescope live_grep<CR>"),
-  dashboard.button( "SPC fh", "Change colorscheme" , ":Telescope colorscheme<CR>"),
-  dashboard.button( "SPC ww", "Vimwiki" , ":VimwikiIndex<CR>"),
-  dashboard.button( "SPC fP", "Edit Config" , ":e ~/.config/nvim/<CR>"),
+  -- dashboard.button( "SPC fo", "Last session" , ":Telescope oldfiles<CR>"),
+  -- dashboard.button( "SPC ff", "Find file" , ":Telescope find_files<CR>"),
+  -- dashboard.button( "SPC N",  "New file" , ":tabnew<CR>"),
+  -- dashboard.button( "SPC fP", "Edit Config" , ":e ~/.config/nvim/<CR>"),
 }
+
+handle:close()
+dashboard.section.footer.val = fortune
+-- dashboard.section.header.opts.hl = "Title"
+-- dashboard.section.buttons.opts.hl = "Debug"
+-- dashboard.section.footer.opts.hl = "Conceal"
+dashboard.config.opts.noautocmd = true
+
 alpha.setup(dashboard.config)
