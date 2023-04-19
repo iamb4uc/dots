@@ -13,4 +13,4 @@ local mappings = {
   x = {":bdelete<CR>", "Close"}
 }
 local opts = {prefix = "<leader>"}
-wk.register(mappings, opts)-- }}}
+wk.register(mappings, opts)
