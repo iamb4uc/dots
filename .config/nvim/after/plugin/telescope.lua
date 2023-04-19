@@ -50,5 +50,4 @@ telescope.setup {
   }
 }
 
-telescope.load_extension("software-licenses")
 pcall(telescope.load_extension, 'fzf')
