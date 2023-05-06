@@ -107,6 +107,8 @@ alias untar="tar -xvzf"
 alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt -x -f bestaudio/best"
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
+alias wal="lf $WALLPAPERS"
+alias x="startx"
 #
 # Git
 alias gup="git pull"
@@ -128,8 +130,8 @@ alias mk="make"
 # eg. pacrem: removes packages, pacin: install packages
 alias pacin="doas pacman -S --color=always"
 alias paccln="doas pacman -Sc --color=always"
-alias pacsnc="doas pacman -Sy --color=always"
-alias pacser="doas pacman -Ss --color=always"
+alias pacsync="doas pacman -Sy --color=always"
+alias pacsrch="doas pacman -Ss --color=always"
 alias pacup="doas pacman -Syu --color=always"
 alias pacrem="doas pacman -Rsn --color=always"
 # 
@@ -149,3 +151,4 @@ alias xu="doas xbps-install -Su"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export GPG_TTY=$(tty)

@@ -7,6 +7,6 @@
 
 texroot="$(grep -i "^.\+\s*root\s*=\s*\S\+" "$1")"
 texroot="${texroot##*=}"
-texroot="${texroot//[\"\' ]}"
+texroot="${texroot//[\"\' ]/}"
 
 [ -f "$texroot" ] && readlink -f "$texroot" || exit 1

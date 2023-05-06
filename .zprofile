@@ -10,7 +10,7 @@ export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="st"
-export BROWSER="chromium"
+export BROWSER="firefox"
 export READER="zathura"
 export FILEBROWSER="lf"
 
@@ -40,6 +40,7 @@ export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 export MUSIC_DIR="$HOME/Music"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export WALLPAPERS=$HOME/Pictures/wallpapers/
 
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+# [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
