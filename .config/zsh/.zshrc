@@ -76,6 +76,7 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' 'fzf\n'
+bindkey -s '^q' 'exit'
 #############
 ## Aliases ##
 #############
@@ -109,19 +110,23 @@ alias yta="yt -x -f bestaudio/best"
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
 alias wal="lf $WALLPAPERS"
 alias x="startx"
+alias spotdl="spotdl --format flac"
+alias rawtojpg="find . -type f \( -iname '*.raw' -o -iname '*.nef' \) -exec sh -c 'darktable-cli {} ${0%.*}.jpg' {} \; -delete" # Converts RAW/NEF file(s) to JPG and removes the original NEF file(s) as per https://askubuntu.com/a/1337782
 #
 # Git
-alias gup="git pull"
-alias gad="git add "
-alias gcom="git commit -m "
+alias gini="git init"
+alias gini="git init"
+alias gpull="git pull"
+alias gad="git add"
+alias gcom="git commit -m"
 alias gcl="git clone --recurse-submodules"
 alias gpush="git push"
 alias gstat="git status"
 #
-# Compile(usefull with MAKEFILES)
+# Compile(usefull with suckless MAKEFILES)
 alias mc="doas make clean"
-alias mci="doas make clean install"
-alias mk="make"
+alias mci="doas make install"
+alias mk="doas make"
 #
 # Package manager
 # 

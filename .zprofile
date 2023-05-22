@@ -41,7 +41,6 @@ export MUSIC_DIR="$HOME/Music"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export WALLPAPERS=$HOME/Pictures/wallpapers/
-export GPG_TTY=$(tty)
 
 # Start graphical server on user's current tty if not already running.
-# [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
