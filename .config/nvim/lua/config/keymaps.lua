@@ -26,7 +26,7 @@ map("n", "<leader>j", "<C-w>j")
 map("n", "<leader>h", "<C-w>h")
 
 -- Netrw
-map("n", "<leader>n", ":Ex<CR>")
+map("n", "<leader>n", ":Neotree right<CR>")
 
 -- compiler stuff by The Tech gent Luke Smith
 map("n", "<leader>a", ':! compiler "%:p"<CR><CR>')
