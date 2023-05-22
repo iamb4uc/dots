@@ -12,9 +12,9 @@ ex	🎯
 *.png	🖼
 *.webp	🖼
 *.ico	🖼
-*.jpg	📸
-*.jpe	📸
-*.jpeg	📸
+*.jpg	🖼
+*.jpe	🖼
+*.jpeg	🖼
 *.gif	🖼
 *.svg	🗺
 *.tif	🖼
@@ -40,9 +40,9 @@ ex	🎯
 *.opus	🎵
 *.ogg	🎵
 *.m4a	🎵
-*.flac	🎼
-*.wav	🎼
-*.mkv	🎥
+*.flac	🎵
+*.wav	🎵
+*.mkv	🎼
 *.mp4	🎥
 *.webm	🎥
 *.mpeg	🎥
