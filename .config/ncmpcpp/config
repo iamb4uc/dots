@@ -1,32 +1,38 @@
 # vim: filetype=conf
 
+# Essential Configs
 ncmpcpp_directory = "~/.config/ncmpcpp"
 lyrics_directory = "~/.local/share/lyrics"
 mpd_music_dir = "~/Music"
 message_delay_time = "1"
-visualizer_type = "spectrum"
-song_list_format = {$4%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
-song_status_format = $b{{$8"%t"}} $3by {$4%a{ $3in $7%b{ (%y)}} $3}|{$8%f}
-song_library_format = {%n - }{%t}|{%f}
-alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
-alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
-current_item_prefix = $(cyan)$r$b
-current_item_suffix = $/r$(end)$/b
-current_item_inactive_column_prefix = $(magenta)$r
-current_item_inactive_column_suffix = $/r$(end)
-playlist_display_mode = columns
-browser_display_mode = columns
-progressbar_look = ->
+
+# UI
+now_playing_prefix = "$b$3 ▶️ "
+now_playing_suffix = " ◀️ $/b"
+autocenter_mode = "yes"
+centered_cursor = yes
+visualizer_spectrum_smooth_look = yes
+visualizer_fps = 120
+header_visibility = no
+progressbar_look = "━━─"
+browser_playlist_prefix = "🎶"
+empty_tag_marker="" 
+display_remaining_time = "no"
+discard_colors_if_item_is_selected = "yes"
+statusbar_visibility = "no"
 media_library_primary_tag = album_artist
-media_library_albums_split_by_date = no
-# startup_screen = "media_library"
-display_volume_level = yes
-ignore_leading_the = yes
-external_editor = nvim
-use_console_editor = yes
-empty_tag_color = magenta
-main_window_color = white
-progressbar_color = white
-progressbar_elapsed_color = blue:b
-statusbar_color = red
-statusbar_time_color = red:b
+follow_now_playing_lyrics = yes
+main_window_color = green
+song_list_format = "$3 %t $R%a "
+song_columns_list_format = "(3)[]{}(85)[white]{t} (1)[blue]{a}"
+song_status_format = " $3%t $0 $1%a "
+playlist_display_mode = "classic" (classic/columns)
+
+# Color settings
+progressbar_color = black
+progressbar_elapsed_color = green
+statusbar_time_color = "green"
+statusbar_color = "green"
+
+# Others
+execute_on_song_change = songinfo
