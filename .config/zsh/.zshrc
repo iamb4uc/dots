@@ -7,25 +7,19 @@
 #  ██ ███████████░░█████████  █████   █████ █████   █████ ░░█████████ 
 # ░░ ░░░░░░░░░░░  ░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░░   ░░░░░░░░░  
                                                                     
-# A fucking horrible and obsurdly fast zsh config inspired by Luke smith's void rice's zsh config
-# No need for soy Oh-my-zsh shit
+# A fucking horrible yet obsurdly fast zsh config inspired by Luke smith's void rice's zsh config
 # Github: iamb4uc
 
-# Enable colors and change prompt:
 autoload -U colors && colors
-PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
-setopt autocd     # Automatically cd into typed directory.
-stty stop undef   # Disable ctrl-s to freeze terminal.
+# PROMPT="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
+PROMPT="%B%{$fg[white]%}%n%{$fg[red]%} ▶️ %{$fg[yellow]%}%M:%{$fg[green]%} %~%{$reset_color%}$%b  "
 
-# Lines configured by zsh-newuser-install
 HISTFILE=$HOME/.cache/zsh/histfile
-HISTSIZE=1000
-SAVEHIST=1000
-unsetopt beep
-bindkey -v
+HISTSIZE=10000
+SAVEHIST=10000
+bindkey -v                                                      # Vim Keybindings -e for soymacs
 
-# Completion
-autoload -Uz compinit
+autoload -Uz compinit                                           # Completion
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' rehash true                              # automatically find new executables in path 
@@ -38,9 +32,10 @@ zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.cache/zcache
+zstyle ':completion:*' cache-path $HOME/.cache/zsh/.zshcomp
 
 # Settings
+setopt autocd                                                   # Automatically cd into typed directory.
 setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
@@ -50,17 +45,11 @@ setopt numericglobsort                                          # Sort filenames
 setopt nobeep                                                   # No beep
 setopt appendhistory                                            # Immediately append history instead of overwriting
 setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-
-# End of lines added by compinstall
-#
 #################
 ## Keybindings ##
 #################
@@ -76,18 +65,18 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' 'fzf\n'
-bindkey -s '^q' 'exit'
+
+
 #############
 ## Aliases ##
 #############
 # Quick one liners for big-ass commands.
-#
 # File navigations
-alias l=lsd
-alias la="lsd -a"
-alias lt="lsd --tree"
-alias ll="lsd -l" 
-alias lla="lsd -la"
+alias l=exa
+alias la="exa -a"
+alias lt="exa --tree"
+alias ll="exa -l" 
+alias lla="exa -la"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -96,26 +85,30 @@ alias ......='cd ../../../../..'
 #
 # Applications
 alias v=$EDITOR
+alias vi=$EDITOR
+alias vim=$EDITOR
+alias e=$EDITOR
 alias lf=lfub
-alias nf=neofetch
-alias wal=nitrogen
+alias du=dust
+alias nf="treefetch -b"
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias cat=bat
 alias sudo=doas
 alias up="uptime -p"
-alias conf="lfcd ~/.config"
+alias econ="nvim ~/.config/."
 alias untar="tar -xvzf"
 alias yt="yt-dlp --embed-metadata -i"
-alias yta="yt -x -f bestaudio/best"
+alias yta="yt --audio-format flac"
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
 alias wal="lf $WALLPAPERS"
-alias x="startx"
 alias spotdl="spotdl --format flac"
 alias rawtojpg="find . -type f \( -iname '*.raw' -o -iname '*.nef' \) -exec sh -c 'darktable-cli {} ${0%.*}.jpg' {} \; -delete" # Converts RAW/NEF file(s) to JPG and removes the original NEF file(s) as per https://askubuntu.com/a/1337782
+alias backup="rsync -avP --partial"
 #
 # Git
 alias gini="git init"
-alias gini="git init"
+alias gstsh="git stash"
+alias grm="git rm"
 alias gpull="git pull"
 alias gad="git add"
 alias gcom="git commit -m"
@@ -124,15 +117,13 @@ alias gpush="git push"
 alias gstat="git status"
 #
 # Compile(usefull with suckless MAKEFILES)
-alias mc="doas make clean"
-alias mci="doas make install"
-alias mk="doas make"
+alias mc="make clean"
+alias mci="make install"
+alias mk="make"
 #
-# Package manager
+# Package managers
 # 
 # Pacman
-# Commands are normally in the form of "pac"<the command>
-# eg. pacrem: removes packages, pacin: install packages
 alias pacin="doas pacman -S --color=always"
 alias paccln="doas pacman -Sc --color=always"
 alias pacsync="doas pacman -Sy --color=always"
@@ -153,6 +144,12 @@ alias xr="doas xbps-remove"
 alias xrc="doas xbps-remove -RcOo"
 alias xrr="doas xbps-remove -ROo"
 alias xu="doas xbps-install -Su"
+#
+# APT/APT-GET (idk much about apt package manager) (make pull request if you know about these commands.) 
+# TODO make more aliases for apt package manager
+alias aptud="doas apt-get update"
+alias aptug="doas apt-get upgrade"
+alias aptin="doas apt-get install"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

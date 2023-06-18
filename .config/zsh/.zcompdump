@@ -129,6 +129,7 @@ _comps=(
 'bundle' '_bundle'
 'bunzip2' '_bzip2'
 'burst' '_mh'
+'bwrap' '_bwrap'
 'bzcat' '_bzip2'
 'bzegrep' '_grep'
 'bzfgrep' '_grep'
@@ -765,7 +766,6 @@ _comps=(
 'ls' '_ls'
 'lsattr' '_lsattr'
 'lsblk' '_lsblk'
-'lsd' '_lsd'
 'lsdiff' '_patchutils'
 'lsmod' '_modutils'
 'lsns' '_lsns'
@@ -1804,22 +1804,22 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _afew _android _archlinux-java _artisan _atach \
-            _bat _bitcoin-cli _bower _bundle _caffeinate \
-            _cap _cargo _cask _ccache _cf \
-            _choc _chromium _cmake _coffee _conan \
-            _concourse _console _cppcheck _curl _dad \
-            _debuild _dget _dhcpcd _diana _docpad \
-            _drush _ecdsautil _email-notmuch _emulator _envdir \
-            _exportfs _fab _fail2ban-client _ffind _flameshot \
-            _fleetctl _flutter _force _fwupdmgr _gas \
-            _gh _ghc _gist _git-flow _git-journal \
-            _git-pulls _git-revise _git-wtf _glances _glow \
-            _golang _google _gpgconf _gtk-launch _hello \
-            _hledger _homestead _httpie _hugo _hyperfine \
-            _ibus _include-what-you-use _inxi _jmeter _jmeter-plugins \
-            _jonas _jrnl _kak _kitchen _knife \
-            _language_codes _lf _libinput _lilypond _loginctl \
-            _lsd _lunchy _mc _middleman _mina \
+            _bat _bitcoin-cli _bower _bundle _bwrap \
+            _caffeinate _cap _cargo _cask _ccache \
+            _cf _choc _chromium _cmake _coffee \
+            _conan _concourse _console _cppcheck _curl \
+            _dad _debuild _dget _dhcpcd _diana \
+            _docpad _drush _ecdsautil _email-notmuch _emulator \
+            _envdir _exportfs _fab _fail2ban-client _ffind \
+            _flameshot _fleetctl _flutter _force _fwupdmgr \
+            _gas _gh _ghc _gist _git-flow \
+            _git-journal _git-pulls _git-revise _git-wtf _glances \
+            _glow _golang _google _gpgconf _gtk-launch \
+            _hello _hledger _homestead _httpie _hugo \
+            _hyperfine _ibus _include-what-you-use _inxi _jmeter \
+            _jmeter-plugins _jonas _jrnl _kak _kitchen \
+            _knife _language_codes _lf _libinput _lilypond \
+            _loginctl _lunchy _mc _middleman _mina \
             _mix _mpv _mssh _mussh _mvn \
             _nano _nanoc _nftables _ninja _node \
             _notmuch _nvm _openssl _openvpn3 _optirun \
