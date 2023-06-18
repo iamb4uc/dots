@@ -2,7 +2,7 @@
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-set icons
+# set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml:*.out:*.toc"
 set cleaner '~/.config/lf/cleaner'
@@ -120,7 +120,7 @@ map C copyto
 map M moveto
 map <c-n> push :mkdir<space>
 map <c-r> reload
-map <c-s> set hidden!
+map H set hidden!
 map <enter> shell
 map x $$f
 map X !$f
