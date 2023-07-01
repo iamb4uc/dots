@@ -90,7 +90,7 @@ alias vim=$EDITOR
 alias e=$EDITOR
 alias lf=lfub
 alias du=dust
-alias nf="treefetch -b"
+alias nf="neofetch"
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias cat=bat
 alias sudo=doas
