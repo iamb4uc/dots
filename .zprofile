@@ -4,7 +4,7 @@
 # Adds '~/.bin' to $PATH
 #
 # PATH
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}:${$(find ~/.local/share/cargo/bin/ -type d -printf %p:)%%:}"
 
 # Default Programs
 export EDITOR="nvim"
