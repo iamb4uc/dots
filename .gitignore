@@ -2,3 +2,4 @@
 .config/mpd/playlists
 .config/mpdnotify/pid
 .config/mpv/watch_later
+.config/zsh/.zcompdump
