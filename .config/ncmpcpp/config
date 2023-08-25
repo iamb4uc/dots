@@ -35,4 +35,4 @@ statusbar_time_color = "green"
 statusbar_color = "green"
 
 # Others
-execute_on_song_change = songinfo
+execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
