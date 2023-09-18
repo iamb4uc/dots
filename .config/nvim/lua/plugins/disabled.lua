@@ -9,6 +9,7 @@ return {
 	{ "ggandor/flit.nvim", enabled = false },
 	-- { "folke/tokyonight.nvim", enabled = false },
 	{ "catppuccin/nvim", enabled = false },
+	{ "folke/flash.nvim", enabled = false },
 	-- { "echasnovski/mini.surround", enabled = false },
 	-- { "JoosepAlviste/nvim-ts-context-commentstring", enabled = false },
 	-- { "echasnovski/mini.bufremove", enabled = false },

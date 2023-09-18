@@ -65,6 +65,8 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' 'fzf\n'
+bindkey -s '^n' 'mkdir -p '
+bindkey -s '^c' 'cp -r '
 
 
 #############

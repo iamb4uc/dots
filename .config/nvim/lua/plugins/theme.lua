@@ -4,15 +4,17 @@
 return {
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "rebelot/kanagawa.nvim" },
+	{ "NTBBloodbath/doom-one.nvim" },
 
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "gruvbox",
+			colorscheme = "doom-one",
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
 		},
 	},
 }
-
--------------
--- GRUVBOX --
-------------
