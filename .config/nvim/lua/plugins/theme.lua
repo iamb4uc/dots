@@ -9,11 +9,12 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "doom-one",
+			-- colorscheme = "kanagawa-dragon",
+			colorscheme = "gruvbox",
 			transparent = true,
 			styles = {
 				sidebars = "transparent",
-				floats = "transparent",
+				-- floats = "transparent",
 			},
 		},
 	},
