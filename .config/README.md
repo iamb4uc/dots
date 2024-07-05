@@ -1,3 +1,3 @@
-# All of my configs files
+# All of my config files
 
-just use sym-links for these
+Just use symlinks or just copy-paste these files.
