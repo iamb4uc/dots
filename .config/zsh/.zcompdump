@@ -1,8 +1,7 @@
-#files: 783	version: 5.9
+#files: 798	version: 5.9
 
 _comps=(
 '-' '_precommand'
-'-*-' '_loginctl'
 '-array-value-' '_value'
 '-assign-parameter-' '_assign'
 '-brace-parameter-' '_brace_parameter'
@@ -93,6 +92,7 @@ _comps=(
 'Mail' '_mail'
 'Mosaic' '_webbrowser'
 '_arguments' '__arguments'
+'_dunstctl' '_dunst'
 'a2ps' '_a2ps'
 'aaaa' '_hosts'
 'aap' '_aap'
@@ -169,6 +169,7 @@ _comps=(
 'bibtex' '_bibtex'
 'bindkey' '_bindkey'
 'bison' '_bison'
+'bluetooth' '_tlp-radio-device'
 'bluetoothctl' '_bluetoothctl'
 'bmake' '_make'
 'bogofilter' '_bogofilter'
@@ -201,6 +202,8 @@ _comps=(
 'builtin' '_builtin'
 'bunzip2' '_bzip2'
 'burst' '_mh'
+'busctl' '_busctl'
+'bwrap' '_bwrap'
 'bzcat' '_bzip2'
 'bzegrep' '_grep'
 'bzfgrep' '_grep'
@@ -215,6 +218,7 @@ _comps=(
 'cargo' '_cargo'
 'cat' '_cat'
 'catchsegv' '_precommand'
+'cb' '_cb'
 'cc' '_gcc'
 'ccal' '_ccal'
 'cd' '_cd'
@@ -343,6 +347,7 @@ _comps=(
 'dsh' '_dsh'
 'dtruss' '_dtruss'
 'du' '_du'
+'dunstctl' '_dunst'
 'dvibook' '_dvi'
 'dviconcat' '_dvi'
 'dvicopy' '_dvi'
@@ -653,6 +658,7 @@ _comps=(
 'hotjava' '_webbrowser'
 'htop' '_htop'
 'hugo' '_hugo'
+'hyperfine' '_hyperfine'
 'iceweasel' '_mozilla'
 'icombine' '_ispell'
 'iconv' '_iconv'
@@ -733,6 +739,7 @@ _comps=(
 'less' '_less'
 'let' '_math'
 'lf' '_lf'
+'lfcd' '_lf'
 'lftp' '_ncftp'
 'lha' '_lha'
 'libinput' '_libinput'
@@ -898,6 +905,7 @@ _comps=(
 'new' '_mh'
 'newgrp' '_groups'
 'next' '_mh'
+'nfc' '_tlp-radio-device'
 'nginx' '_nginx'
 'ngrep' '_ngrep'
 'nice' '_nice'
@@ -1118,6 +1126,8 @@ _comps=(
 'ruby' '_ruby'
 'ruby-mri' '_ruby'
 'run-help' '_run-help'
+'run-on-ac' '_tlp-run-on'
+'run-on-bat' '_tlp-run-on'
 'rup' '_hosts'
 'rusage' '_precommand'
 'rview' '_vim'
@@ -1166,7 +1176,6 @@ _comps=(
 'sha512sum' '_md5sum'
 'sha512t256' '_cksum'
 'shasum' '_shasum'
-'shell-script' '_loginctl'
 'shift' '_arrays'
 'show' '_mh'
 'showchar' '_psutils'
@@ -1274,6 +1283,9 @@ _comps=(
 'tkinfo' '_texinfo'
 'tla' '_tla'
 'tload' '_tload'
+'tlp' '_tlp'
+'tlp-rdw' '_tlp-rdw'
+'tlp-stat' '_tlp-stat'
 'tmux' '_tmux'
 'todo' '_devtodo'
 'todo.sh' '_todo.sh'
@@ -1308,6 +1320,7 @@ _comps=(
 'txt' '_hosts'
 'type' '_which'
 'typeset' '_typeset'
+'udisksctl' '_udisks2'
 'ulimit' '_ulimit'
 'uml_mconsole' '_uml'
 'uml_moo' '_uml'
@@ -1365,6 +1378,7 @@ _comps=(
 'virt-xml-validate' '_libvirt'
 'visudo' '_visudo'
 'vitrage' '_openstack'
+'vkpurge' '_vkpurge'
 'vmstat' '_vmstat'
 'vncserver' '_vnc'
 'vncviewer' '_vnc'
@@ -1389,11 +1403,13 @@ _comps=(
 'whoami' '_nothing'
 'whois' '_whois'
 'whom' '_mh'
+'wifi' '_tlp-radio-device'
 'wiggle' '_wiggle'
 'wipefs' '_wipefs'
 'wodim' '_cdrecord'
 'wpa_cli' '_wpa_cli'
 'write' '_users_on'
+'wwan' '_tlp-radio-device'
 'www' '_webbrowser'
 'xargs' '_xargs'
 'xattr' '_attr'
@@ -1465,6 +1481,7 @@ _comps=(
 'xzcat' '_xz'
 'yafc' '_yafc'
 'yash' '_sh'
+'youtube-dl' '_youtube-dl'
 'ypbind' '_yp'
 'ypcat' '_yp'
 'ypmatch' '_yp'
@@ -1636,10 +1653,13 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _bat _bluetoothctl _cargo _curl _fd \
-            _flameshot _glow _hugo _lf _libinput \
-            _loginctl _mpv _pulseaudio _rg _sv \
-            _xbps _xbps_src _xwallpaper _zathura _cdr \
+autoload -Uz _bat _bluetoothctl _busctl _bwrap _cargo \
+            _cb _curl _dunst _dunstctl _fd \
+            _flameshot _glow _hugo _hyperfine _lf \
+            _libinput _loginctl _mpv _pulseaudio _rg \
+            _sv _tlp _tlp-radio-device _tlp-rdw _tlp-run-on \
+            _tlp-stat _udisks2 _vkpurge _xbps _xbps_src \
+            _xbps_src.orig _xwallpaper _youtube-dl _zathura _cdr \
             _all_labels _all_matches _alternative _approximate _arg_compile \
             _arguments _bash_completions _cache_invalid _call_function _combination \
             _comp_locale _complete _complete_debug _complete_help _complete_help_generic \
