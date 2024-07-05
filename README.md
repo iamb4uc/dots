@@ -1,3 +1,4 @@
 ![banner](/img/banner.png) 
 
-<pre>DINGUS DOTS FOR THE GENTS</pre>
+<code>DINGUS DOTS FOR THE GENTS</code>
+<div style="background-color: white; color: white;">I HATE MY LIFE BUT GOTTA CHASE THE BAG 💰</div>
