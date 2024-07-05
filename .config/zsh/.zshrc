@@ -11,8 +11,9 @@
 # Github: iamb4uc
 
 autoload -U colors && colors
-# PROMPT="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
-PROMPT="%B%{$fg[white]%}%n%{$fg[red]%} ▶️ %{$fg[yellow]%}%M:%{$fg[green]%} %~%{$reset_color%}$%b  "
+PROMPT="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
+# PROMPT="%B%{$fg[white]%}%n%{$fg[red]%} ▶️ %{$fg[yellow]%}%M:%{$fg[green]%} %~%{$reset_color%}$%b  "
+# RPROMPT="%B%t%b"
 
 HISTFILE=$HOME/.cache/zsh/histfile
 HISTSIZE=10000
@@ -64,7 +65,7 @@ lfcd () {
     fi
 }
 bindkey -s '^o' 'lfcd\n'
-bindkey -s '^f' 'fzf\n'
+bindkey -s '^f' "fzf | xargs 'nvim'\n"
 bindkey -s '^n' 'mkdir -p '
 bindkey -s '^c' 'cp -r '
 
@@ -75,6 +76,7 @@ bindkey -s '^c' 'cp -r '
 # Quick one liners for big-ass commands.
 # File navigations
 alias l=exa
+alias ls=exa
 alias la="exa -a"
 alias lt="exa --tree"
 alias ll="exa -l" 
@@ -84,7 +86,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
-#
+alias rm="rm -rf" # Cause why not
+
 # Applications
 alias v=$EDITOR
 alias vi=$EDITOR
@@ -99,28 +102,40 @@ alias sudo=doas
 alias up="uptime -p"
 alias econ="nvim ~/.config/."
 alias untar="tar -xvzf"
-alias yt="yt-dlp --embed-metadata -i"
+alias yt="yt-dlp --add-metadata -i"
 alias yta="yt --audio-format flac"
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
 alias wal="lf $WALLPAPERS"
-alias spotdl="spotdl --format flac"
+alias spotdl="spotdl --output-format flac"
 alias rawtojpg="find . -type f \( -iname '*.raw' -o -iname '*.nef' \) -exec sh -c 'darktable-cli {} ${0%.*}.jpg' {} \; -delete" # Converts RAW/NEF file(s) to JPG and removes the original NEF file(s) as per https://askubuntu.com/a/1337782
-alias backup="rsync -avP --partial"
+alias snc="rsync -avP --partial"
+alias btc="bluetoothctl"
+alias screc="ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -c:v libx264 -i :0.0" # You have to provide the file name along with this alias
+alias pyenv=". $XDG_DATA_HOME/venv/bin/activate"
 #
 # Git
 alias gini="git init"
 alias gstsh="git stash"
-alias grm="git rm"
+alias gdiff="git diff"
+alias grm="git rm -rf"
 alias gpull="git pull"
 alias gad="git add"
 alias gcom="git commit -m"
 alias gcl="git clone --recurse-submodules"
 alias gpush="git push"
 alias gstat="git status"
+
+# Tmux
+alias t="tmux"
+alias ta="tmux a -t"
+alias tls="tmux ls"
+alias tn="tmux new -t"
+alias tks="tmux kill-server"
+alias ts="tmux source $HOME/.config/tmux/tmux.conf"
 #
 # Compile(usefull with suckless MAKEFILES)
-alias mc="make clean"
-alias mci="make install"
+alias mc="doas make clean"
+alias mci="doas make install"
 alias mk="make"
 #
 # Package managers
@@ -149,7 +164,7 @@ alias xu="doas xbps-install -Su"
 #
 # APT/APT-GET (idk much about apt package manager) (make pull request if you know about these commands.) 
 # TODO make more aliases for apt package manager
-alias aptud="doas apt-get update"
+alias aptup="doas apt-get update"
 alias aptug="doas apt-get upgrade"
 alias aptin="doas apt-get install"
 
