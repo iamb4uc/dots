@@ -11,10 +11,10 @@ return {
 		opts = {
 			-- colorscheme = "kanagawa-dragon",
 			colorscheme = "gruvbox",
-			transparent = true,
+			transparent = false,
 			styles = {
 				sidebars = "transparent",
-				-- floats = "transparent",
+				floats = "transparent",
 			},
 		},
 	},

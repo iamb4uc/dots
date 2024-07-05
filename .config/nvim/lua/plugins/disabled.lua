@@ -8,7 +8,7 @@ return {
 	{ "nvim-pack/nvim-spectre", enabled = false },
 	{ "ggandor/flit.nvim", enabled = false },
 	-- { "folke/tokyonight.nvim", enabled = false },
-	{ "catppuccin/nvim", enabled = false },
+	-- { "catppuccin/nvim", enabled = false },
 	{ "folke/flash.nvim", enabled = false },
 	-- { "echasnovski/mini.surround", enabled = false },
 	-- { "JoosepAlviste/nvim-ts-context-commentstring", enabled = false },
