@@ -37,13 +37,6 @@ go) go run "$file" ;;
 h) sudo make install ;;
 java) javac -d classes "$file" && java -cp classes "${1%.*}" ;;
 m) octave "$file" ;;
-md) if [ -x "$(command -v lowdown)" ]; then
-	lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept >"$base".pdf
-elif [ -x "$(command -v groffdown)" ]; then
-	groffdown -i "$file" | groff >"$base.pdf"
-else
-	pandoc -t ms --highlight-style=kate -s -o "$base".pdf "$file"
-fi ;;
 mom) preconv "$file" | refer -PS -e | groff -mom -kept -T pdf >"$base".pdf ;;
 ms) preconv "$file" | refer -PS -e | groff -me -ms -kept -T pdf >"$base".pdf ;;
 org) emacs "$file" --batch -u "$USER" -f org-latex-export-to-pdf ;;
