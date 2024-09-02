@@ -10,4 +10,5 @@ setbg &
 picom &
 syncthing &
 mpd &
+# redshift &
 # mpv /home/iamb4uc/Git/dots/music/intro1.mp3

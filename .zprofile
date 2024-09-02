@@ -9,6 +9,7 @@ export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}:${$(find ~/.lo
 # Default Programs
 export EDITOR="nvim"
 export VISUAL="nvim"
+export TERM="st"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
@@ -42,6 +43,9 @@ export MUSIC_DIR="$HOME/Music"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export WALLPAPERS=$HOME/Pictures/wallpapers/
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # Start graphical server on user's current tty if not already running.
+#
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
