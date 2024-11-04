@@ -1,0 +1,28 @@
+#!/bin/sh
+
+password=$(dmenu -p "Enter sudo password:")
+
+if [ -z "$password" ]; then
+    notify-send "KVM" "No password entered. Exiting."
+    exit 1
+fi
+
+vms=$(echo "$password" | sudo -S virsh list --all --name 2>/dev/null | grep -v '^$')
+
+if [ -z "$vms" ]; then
+    notify-send "KVM" "No VMs found or authentication failed."
+    exit 1
+fi
+
+vm=$(echo "$vms" | dmenu -p -i "Select a VM:")
+
+if [ -z "$vm" ]; then
+    notify-send "KVM" "No VM selected. Exiting."
+    exit 1
+fi
+
+if echo "$password" | sudo -S virsh start "$vm" 2>/dev/null; then
+    notify-send "KVM" "$vm started successfully"
+else
+    notify-send "KVM" "Failed to start $vm"
+fi
