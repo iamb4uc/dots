@@ -42,3 +42,6 @@ map("n", "<leader>y", "'+y")
 map("n", "<leader>Y", "'+Y")
 map("v", "<leader>y", "'+y")
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
+
+-- Change NeoTree Layout
+map("n", "<leader>Y", "'+Y")

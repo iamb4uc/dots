@@ -9,9 +9,8 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			-- colorscheme = "kanagawa-dragon",
 			colorscheme = "gruvbox",
-			transparent = false,
+			transparent = true,
 			styles = {
 				sidebars = "transparent",
 				floats = "transparent",
