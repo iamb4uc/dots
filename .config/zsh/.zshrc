@@ -111,7 +111,7 @@ alias rawtojpg="find . -type f \( -iname '*.raw' -o -iname '*.nef' \) -exec sh -
 alias snc="rsync -avP --partial"
 alias btc="bluetoothctl"
 alias screc="ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -c:v libx264 -i :0.0" # You have to provide the file name along with this alias
-alias pyenv=". $XDG_DATA_HOME/venv/bin/activate"
+alias pyenv="source .env/bin/activate"
 #
 # Git
 alias gini="git init"
@@ -155,8 +155,9 @@ alias yastat="yay -Ps"
 alias yaser="yay -Sc"
 #
 # XBPS
+alias xq="xbps-query"
+alias xql="xbps-query -l"
 alias xi="doas xbps-install -S"
-alias xq="doas xbps-query"
 alias xr="doas xbps-remove"
 alias xrc="doas xbps-remove -RcOo"
 alias xrr="doas xbps-remove -ROo"
@@ -167,6 +168,9 @@ alias xu="doas xbps-install -Su"
 alias aptup="doas apt-get update"
 alias aptug="doas apt-get upgrade"
 alias aptin="doas apt-get install"
+
+
+alias ssconnect="doas openvpn"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
