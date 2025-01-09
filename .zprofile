@@ -13,7 +13,7 @@ export TERM="st"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
-export FILEBROWSER="lf"
+export FILEBROWSER="lfub"
 
 # ~/ XDG STANDARDS
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
@@ -45,6 +45,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export WALLPAPERS=$HOME/Pictures/wallpapers/
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/cache/.zcompdump"
 
 # Start graphical server on user's current tty if not already running.
 #
