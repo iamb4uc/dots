@@ -124,6 +124,8 @@ alias gcom="git commit -m"
 alias gcl="git clone --recurse-submodules"
 alias gpush="git push"
 alias gstat="git status"
+alias glogo="git log --oneline"
+alias gao="git remote add origin"
 
 # Tmux
 alias t="tmux"
@@ -168,6 +170,7 @@ alias xu="doas xbps-install -Su"
 alias aptup="doas apt-get update"
 alias aptug="doas apt-get upgrade"
 alias aptin="doas apt-get install"
+alias dpkin="doas dpkg -i"
 
 
 alias ssconnect="doas openvpn"
