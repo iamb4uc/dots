@@ -1,12 +1,12 @@
-#     ███████████  █████████  █████   █████ ███████████     █████████ 
+#     ███████████  █████████  █████   █████ ███████████     █████████
 #    ░█░░░░░░███  ███░░░░░███░░███   ░░███ ░░███░░░░░███   ███░░░░░███
-#    ░     ███░  ░███    ░░░  ░███    ░███  ░███    ░███  ███     ░░░ 
-#         ███    ░░█████████  ░███████████  ░██████████  ░███         
-#        ███      ░░░░░░░░███ ░███░░░░░███  ░███░░░░░███ ░███         
+#    ░     ███░  ░███    ░░░  ░███    ░███  ░███    ░███  ███     ░░░
+#         ███    ░░█████████  ░███████████  ░██████████  ░███
+#        ███      ░░░░░░░░███ ░███░░░░░███  ░███░░░░░███ ░███
 #      ████     █ ███    ░███ ░███    ░███  ░███    ░███ ░░███     ███
-#  ██ ███████████░░█████████  █████   █████ █████   █████ ░░█████████ 
-# ░░ ░░░░░░░░░░░  ░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░░   ░░░░░░░░░  
-                                                                    
+#  ██ ███████████░░█████████  █████   █████ █████   █████ ░░█████████
+# ░░ ░░░░░░░░░░░  ░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░░   ░░░░░░░░░
+
 # A fucking horrible yet obsurdly fast zsh config inspired by Luke smith's void rice's zsh config
 # Github: iamb4uc
 
@@ -64,6 +64,7 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' "fzf | xargs 'nvim'\n"
 bindkey -s '^n' 'mkdir -p '
@@ -112,7 +113,8 @@ alias snc="rsync -avP --partial"
 alias btc="bluetoothctl"
 alias screc="ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -c:v libx264 -i :0.0" # You have to provide the file name along with this alias
 alias pyenv="source .env/bin/activate"
-#
+alias vpn="doas openvpn"
+
 # Git
 alias gini="git init"
 alias gstsh="git stash"
@@ -126,6 +128,8 @@ alias gpush="git push"
 alias gstat="git status"
 alias glogo="git log --oneline"
 alias gao="git remote add origin"
+alias gcheck="git checkout"
+alias gb="git branch"
 
 # Tmux
 alias t="tmux"
@@ -134,14 +138,17 @@ alias tls="tmux ls"
 alias tn="tmux new -t"
 alias tks="tmux kill-server"
 alias ts="tmux source $HOME/.config/tmux/tmux.conf"
-#
+
+# Docker
+# Kubernetes
+
 # Compile(usefull with suckless MAKEFILES)
 alias mc="doas make clean"
 alias mci="doas make install"
 alias mk="make"
-#
+
 # Package managers
-# 
+
 # Pacman
 alias pacin="doas pacman -S --color=always"
 alias paccln="doas pacman -Sc --color=always"
@@ -149,13 +156,13 @@ alias pacsync="doas pacman -Sy --color=always"
 alias pacsrch="doas pacman -Ss --color=always"
 alias pacup="doas pacman -Syu --color=always"
 alias pacrem="doas pacman -Rsn --color=always"
-# 
+
 # AUR(yay)
 alias yain="yay -S"
 alias yacln="yay -Sc"
 alias yastat="yay -Ps"
 alias yaser="yay -Sc"
-#
+
 # XBPS
 alias xq="xbps-query"
 alias xql="xbps-query -l"
@@ -164,16 +171,15 @@ alias xr="doas xbps-remove"
 alias xrc="doas xbps-remove -RcOo"
 alias xrr="doas xbps-remove -ROo"
 alias xu="doas xbps-install -Su"
-#
+
 # APT/APT-GET (idk much about apt package manager) (make pull request if you know about these commands.) 
 # TODO make more aliases for apt package manager
 alias aptup="doas apt-get update"
 alias aptug="doas apt-get upgrade"
 alias aptin="doas apt-get install"
+alias aptrm="doas apt-get remove"
+alias aptautorm="doas apt-get autoremove"
 alias dpkin="doas dpkg -i"
-
-
-alias ssconnect="doas openvpn"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
