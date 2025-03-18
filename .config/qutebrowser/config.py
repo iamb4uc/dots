@@ -89,14 +89,14 @@ c.colors.messages.info.bg = gruvbox_dark['bg']
 
 # Set dark mode
 c.colors.webpage.bg = gruvbox_dark['bg']
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 c.statusbar.show = 'never'
 c.tabs.show = 'never'
 
 c.url.searchengines = {
-    'DEFAULT': 'https://searx.be/search?q={}',
-    '!d':      'https://duckduckgo.com/?ia=web&q={}',
+    '!s':      'https://searx.be/search?q={}',
+    'DEFAULT': 'https://duckduckgo.com/?ia=web&q={}',
 }
 
 c.url.default_page =  "~/.local/share/home/index.html"
