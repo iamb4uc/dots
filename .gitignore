@@ -4,3 +4,5 @@ pid
 watch_later
 .config/zsh/.zcompdump
 .config/zsh/.zcompdump
+.config/qutebrowser/autoconfig.yml
+.config/zsh/.zcompdump.void.6606
