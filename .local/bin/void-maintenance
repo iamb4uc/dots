@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This script must be run with sudo or as root."
+  exit 1
+fi
+
+xbps-install -Suv || true
+xbps-install -S symlinks chkstat || true
+xbps-remove -Oo || true
+vkpurge rm all
+xbps-remove -O || true
+symlinks -rd /
+xbps-remove -R symlinks || true
+rm -rf /var/cache/*
+rm -rf /tmp/*
+
+for dir in /home/*; do
+  [ -d "$dir/.cache" ] && rm -rf "$dir/.cache/*"
+done
+
+find /var/log -type f -name "*.log.*" -exec rm -f {} \;
+journalctl --vacuum-time=7d
+xbps-pkgdb -m repolock
+xbps-pkgdb -a
+xbps-reconfigure -a
+df -h
+
+printf "\nSystem maintenance and best practice checks completed successfully.\n"
