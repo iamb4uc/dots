@@ -15,6 +15,7 @@ PROMPT="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M %{$fg[ma
 # PROMPT="%B%{$fg[white]%}%n%{$fg[red]%} ▶️ %{$fg[yellow]%}%M:%{$fg[green]%} %~%{$reset_color%}$%b  "
 # RPROMPT="%B%t%b"
 
+mkdir -p "$(dirname "$HOME/.cache/zsh/histfile")" && touch "$HOME/.cache/zsh/histfile"
 HISTFILE=$HOME/.cache/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=10000
