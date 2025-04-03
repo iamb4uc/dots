@@ -1,9 +1,13 @@
 {
-  "extras": [
-
-  ],
-  "news": {
-    "NEWS.md": "10960"
-  },
-  "version": 7
+        "extras": [
+                "lazyvim.plugins.extras.coding.mini-surround",
+                "lazyvim.plugins.extras.coding.yanky",
+                "lazyvim.plugins.extras.editor.illuminate",
+                "lazyvim.plugins.extras.util.dot",
+                "lazyvim.plugins.extras.util.mini-hipatterns"
+        ],
+        "news": {
+                "NEWS.md": "10960"
+        },
+        "version": 7
 }
