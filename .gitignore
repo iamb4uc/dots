@@ -6,3 +6,4 @@ watch_later
 .config/zsh/.zcompdump
 .config/qutebrowser/autoconfig.yml
 .config/zsh/.zcompdump.void.6606
+.config/nvim/lazy-lock.json
