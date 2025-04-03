@@ -8,3 +8,5 @@ watch_later
 .config/zsh/.zcompdump.void.6606
 .config/nvim/lazy-lock.json
 .config/qutebrowser/qsettings/QtProject.conf
+.config/qutebrowser/bookmarks/urls
+.config/qutebrowser/quickmarks
