@@ -3,8 +3,14 @@
 -------------
 return {
 	{ "ellisonleao/gruvbox.nvim" },
-	{ "rebelot/kanagawa.nvim" },
-	{ "NTBBloodbath/doom-one.nvim" },
+	{
+		"rebelot/kanagawa.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"NTBBloodbath/doom-one.nvim",
+		event = "VeryLazy",
+	},
 
 	{
 		"LazyVim/LazyVim",
