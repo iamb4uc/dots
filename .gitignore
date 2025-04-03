@@ -7,3 +7,4 @@ watch_later
 .config/qutebrowser/autoconfig.yml
 .config/zsh/.zcompdump.void.6606
 .config/nvim/lazy-lock.json
+.config/qutebrowser/qsettings/QtProject.conf
