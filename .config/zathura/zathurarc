@@ -40,3 +40,4 @@ set recolor                     false
 set recolor-keephue             false # keep original color
 
 set selection-clipboard         clipboard
+set database                    sqlite
