@@ -1,0 +1,112 @@
+#!/bin/sh
+# pman – render man pages to PDF and view them with Zathura first
+# usage:  pman [section] topic      OR      pman topic [section]
+# also if using zathura make sure to add this line to the config
+# ```set database sqlite```
+
+##############################################################################
+usage() {
+    printf 'Usage: %s [section] topic\n' "$(basename "$0")" >&2
+    exit 1
+}
+
+# ---------- pick viewer -----------------------------------------------------
+choose_viewer() {
+    if command -v zathura >/dev/null 2>&1; then
+        printf 'zathura\n'
+    elif [ -n "$PDFVIEWER" ] && command -v "$PDFVIEWER" >/dev/null 2>&1; then
+        printf '%s\n' "$PDFVIEWER"
+    elif command -v xdg-open >/dev/null 2>&1; then
+        printf 'xdg-open\n'
+    elif command -v open >/dev/null 2>&1; then
+        printf 'open\n'
+    else
+        printf '%s\n' ''
+    fi
+}
+
+# ---------- portable mktemp -d ----------------------------------------------
+make_tmpdir() {
+    prefix=${TMPDIR:-/tmp}/pman.$$
+    n=0
+    while :; do
+        dir="${prefix}.$n"
+        (umask 077 && mkdir "$dir") 2>/dev/null && {
+            echo "$dir"
+            return
+        }
+        n=$((n + 1))
+    done
+}
+
+# ---------- open viewer (sync for zathura) ----------------------------------
+open_pdf() {
+    case "$viewer" in
+    zathura) "$viewer" "$1" ;; # blocks
+    *) "$viewer" "$1" >/dev/null 2>&1 & ;;
+    esac
+}
+
+##############################################################################
+# argument parsing (section may appear first or second)
+
+[ $# -eq 0 ] && usage
+section=
+topic=
+if [ $# -eq 1 ]; then
+    topic=$1 # no section given → default to 1
+elif [ $# -eq 2 ]; then
+    if printf '%s\n' "$1" | grep -qE '^[0-9]+$'; then
+        section=$1
+        topic=$2
+    elif printf '%s\n' "$2" | grep -qE '^[0-9]+$'; then
+        section=$2
+        topic=$1
+    else
+        usage
+    fi
+else
+    usage
+fi
+
+##############################################################################
+# locate the manual file (single file, not all)
+
+if [ -n "$section" ]; then
+    man_path=$(man -w "$section" "$topic" 2>/dev/null | awk 'NR==1{print;exit}')
+else
+    man_path=$(man -w "$topic" 2>/dev/null | awk 'NR==1{print;exit}') # default search order (section 1 first)
+fi
+
+[ -z "$man_path" ] && {
+    printf 'pman: no manual entry for %s\n' "$topic" >&2
+    exit 1
+}
+
+##############################################################################
+# prepare environment
+
+viewer=$(choose_viewer)
+[ -z "$viewer" ] && {
+    printf 'pman: no PDF viewer found (install zathura or set $PDFVIEWER)\n' >&2
+    exit 1
+}
+
+tmpdir=$(make_tmpdir)
+trap 'rm -rf "$tmpdir"' EXIT INT TERM
+
+##############################################################################
+# convert & display
+
+base=$(basename "$man_path")
+name=$(printf '%s' "$base" | sed 's/\.[0-9a-z]\+\(\.gz\)\?$//')
+pdf="$tmpdir/${name}.pdf"
+
+if printf '%s\n' "$base" | grep -q '\.gz$'; then
+    gzip -dc "$man_path" | mandoc -Tpdf >"$pdf"
+else
+    mandoc -Tpdf "$man_path" >"$pdf"
+fi
+
+open_pdf "$pdf"
+[ "$viewer" = "zathura" ] || wait # wait only for backgrounded viewers
