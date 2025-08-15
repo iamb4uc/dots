@@ -11,7 +11,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERM="st"
 export TERMINAL="st"
-export BROWSER="mullvad"
+export BROWSER="zen"
 export READER="zathura"
 export FILEBROWSER="lfub"
 
