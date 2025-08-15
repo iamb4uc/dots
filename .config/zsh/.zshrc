@@ -11,7 +11,7 @@
 # Github: iamb4uc
 
 autoload -U colors && colors
-PROMPT="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
+# PROMPT="%B%{$fg[red]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b  "
 # PROMPT="%B%{$fg[white]%}%n%{$fg[red]%} ▶️ %{$fg[yellow]%}%M:%{$fg[green]%} %~%{$reset_color%}$%b  "
 # RPROMPT="%B%t%b"
 
@@ -184,3 +184,7 @@ alias dpkin="doas dpkg -i"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $XDG_CONFIG_HOME/zsh/completions/docker.zsh
+source $XDG_CONFIG_HOME/zsh/completions/git_lfs.zsh
+
+eval "$(starship init zsh)"
