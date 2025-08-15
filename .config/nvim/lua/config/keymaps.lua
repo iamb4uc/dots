@@ -14,11 +14,9 @@ map("n", "<leader>fs", ":w<CR>")
 map("n", "<leader>fsa", ":wall<CR>")
 map("n", "<leader>qq", ":q<CR>")
 map("n", "<leader>Qq", ":q!<CR>")
-map("n", "<leader>fsq", ":wq<CR>")
+map("n", "<leader>fsq", ":x<CR>")
 
 -- Tab splits
-map("n", "<leader>vs", ":vsplit<CR>")
-map("n", "<leader>hs", ":split<CR>")
 map("n", "<leader>sc", "<C-w><C-c>")
 map("n", "<leader>l", "<C-w>l")
 map("n", "<leader>k", "<C-w>k")
