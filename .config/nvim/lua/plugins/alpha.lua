@@ -13,7 +13,7 @@ return {
 　 |:::::::|／}｀ｽ /          /
 .　|::::::|(_:::つ/ ThinkPad /　Neovim!
 .￣￣￣￣￣￣￣＼/＿＿＿＿＿/￣￣￣￣￣
-    ]]
+]]
 
 		dashboard.section.header.val = vim.split(logo, "\n")
 		dashboard.section.buttons.val = {
@@ -29,9 +29,10 @@ return {
 			button.opts.hl_shortcut = "AlphaShortcut"
 		end
 		dashboard.section.header.opts.hl = "AlphaHeader"
+		dashboard.section.header.opts.hl = "Function"
 		dashboard.section.buttons.opts.hl = "AlphaButtons"
 		dashboard.section.footer.opts.hl = "AlphaFooter"
-		dashboard.opts.layout[1].val = 8
+		dashboard.opts.layout[1].val = 4
 		return dashboard
 	end,
 	config = function(_, dashboard)
@@ -53,7 +54,13 @@ return {
 			callback = function()
 				local stats = require("lazy").stats()
 				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-				dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+				dashboard.section.footer.val = "⚡ Neovim loaded "
+					.. stats.loaded
+					.. "/"
+					.. stats.count
+					.. " plugins in "
+					.. ms
+					.. "ms"
 				pcall(vim.cmd.AlphaRedraw)
 			end,
 		})
