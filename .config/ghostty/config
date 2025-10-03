@@ -1,0 +1,16 @@
+window-colorspace = display-p3
+window-theme = dark
+window-decoration = none
+window-padding-x = 20
+window-padding-y = 20
+window-padding-balance = true
+window-padding-color = extend
+theme = catppuccin-mocha
+cursor-invert-fg-bg = true
+cursor-style-blink = true
+bold-is-bright = true
+mouse-hide-while-typing = true
+gtk-titlebar = false
+confirm-close-surface = false
+font-family = JetBrainsMono Nerd Font
+

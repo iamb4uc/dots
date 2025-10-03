@@ -54,3 +54,4 @@ export ZSH_COMPDUMP="$XDG_CACHE_HOME/cache/.zcompdump"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f "$XDG_DATA_HOME/env" ] && \. "$XDG_DATA_HOME/env"

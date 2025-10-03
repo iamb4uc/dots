@@ -188,3 +188,4 @@ source $XDG_CONFIG_HOME/zsh/completions/docker.zsh
 source $XDG_CONFIG_HOME/zsh/completions/git_lfs.zsh
 
 eval "$(starship init zsh)"
+pfetch
