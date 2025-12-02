@@ -141,7 +141,22 @@ alias tks="tmux kill-server"
 alias ts="tmux source $HOME/.config/tmux/tmux.conf"
 
 # Docker
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dr="docker run"
+alias dei="docker exec -it"
+alias dcd="docker compose down"
+alias dcu="docker compose up"
+alias dcud="docker compose up -d"
+alias dcudr="docker compose up -d --remove-orphans"
+
 # Kubernetes
+alias k="kubectl"
+alias kg="kubectl get"
+alias kgp="kubectl get pods"
+alias kgpa="kubectl get pods --all-namespaces"
+alias kgn="kubectl get nodes"
+alias kgnam="kubectl get namespace"
 
 # Compile(usefull with suckless MAKEFILES)
 alias mc="doas make clean"
