@@ -1,0 +1,283 @@
+#!/usr/bin/env bash
+set -u
+
+file="$1"
+w="${2:-80}"
+h="${3:-40}"
+x="${4:-0}"
+y="${5:-0}"
+mode="${6:-preview}"
+
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/lf"
+mkdir -p "$cache_dir"
+
+id="lf-preview"
+
+have() { command -v "$1" >/dev/null 2>&1; }
+
+realpath_f() {
+    readlink -f -- "$1" 2>/dev/null || printf '%s' "$1"
+}
+
+hash_file() {
+    local target
+    target="$(realpath_f "$1")"
+    stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$target" 2>/dev/null |
+        sha256sum | awk '{print $1}'
+}
+
+batcmd() {
+    if have batcat; then
+        batcat "$@"
+    elif have bat; then
+        bat "$@"
+    else
+        cat "$@"
+    fi
+}
+
+preview_text() {
+    if have batcat || have bat; then
+        batcmd --style=plain --color=always --paging=never --line-range=:400 -- "$1"
+    else
+        sed -n '1,400p' -- "$1"
+    fi
+}
+
+draw_with_kitty() {
+    local img="$1"
+    kitten icat \
+        --stdin=no \
+        --transfer-mode=memory \
+        --place "${w}x${h}@${x}x${y}" \
+        -- "$img" </dev/null >/dev/tty 2>/dev/null
+}
+
+draw_with_ueberzugpp() {
+    local img="$1"
+    [ -n "${LF_UEBERZUG_FIFO-}" ] || return 1
+    [ -p "${LF_UEBERZUG_FIFO}" ] || return 1
+    have jq || return 1
+
+    jq -cn \
+        --arg path "$img" \
+        --arg identifier "$id" \
+        --argjson x "$x" \
+        --argjson y "$y" \
+        --argjson mw "$w" \
+        --argjson mh "$h" \
+        '{
+          action: "add",
+          identifier: $identifier,
+          path: $path,
+          x: $x,
+          y: $y,
+          max_width: $mw,
+          max_height: $mh,
+          scaler: "fit_contain"
+        }' >"$LF_UEBERZUG_FIFO" 2>/dev/null
+}
+
+draw_with_chafa() {
+    local img="$1"
+    chafa \
+        --probe-mode ctty \
+        --passthrough auto \
+        --polite on \
+        --animate off \
+        --size "${w}x${h}" \
+        -- "$img"
+}
+
+draw_image() {
+    local img="$1"
+
+    if [ -n "${KITTY_WINDOW_ID-}" ] && have kitten; then
+        draw_with_kitty "$img" && exit 1
+    fi
+
+    if have ueberzugpp && [ -n "${LF_UEBERZUG_FIFO-}" ]; then
+        draw_with_ueberzugpp "$img" && exit 1
+    fi
+
+    if have chafa; then
+        draw_with_chafa "$img" || true
+        exit 0
+    fi
+
+    file --dereference --brief -- "$img"
+    exit 0
+}
+
+mime="$(file --dereference --brief --mime-type -- "$file" 2>/dev/null || printf 'application/octet-stream')"
+hash="$(hash_file "$file")"
+thumb_base="$cache_dir/thumb.$hash"
+thumb_png="${thumb_base}.png"
+thumb_jpg="${thumb_base}.jpg"
+text_cache="${thumb_base}.txt"
+
+case "$mime" in
+inode/x-empty)
+    printf '[empty file]\n'
+    ;;
+
+text/* | application/xml | application/x-xml | application/x-sh | application/x-shellscript | application/javascript | application/x-javascript | application/x-yaml | application/yaml)
+    preview_text "$file"
+    ;;
+
+text/html)
+    if have lynx; then
+        lynx -width="$w" -display_charset=utf-8 -dump "$file"
+    else
+        preview_text "$file"
+    fi
+    ;;
+
+application/json | application/x-ndjson)
+    if have jq; then
+        jq -C . -- "$file" 2>/dev/null || preview_text "$file"
+    else
+        preview_text "$file"
+    fi
+    ;;
+
+image/svg+xml)
+    if have magick; then
+        [ -f "$thumb_png" ] || magick "$file" "$thumb_png" >/dev/null 2>&1
+        [ -f "$thumb_png" ] && draw_image "$thumb_png"
+    fi
+    preview_text "$file"
+    ;;
+
+image/x-xcf)
+    if have magick; then
+        [ -f "$thumb_jpg" ] || magick "$file[0]" "$thumb_jpg" >/dev/null 2>&1
+        [ -f "$thumb_jpg" ] && draw_image "$thumb_jpg"
+    fi
+    file --dereference --brief -- "$file"
+    ;;
+
+image/*)
+    draw_image "$file"
+    ;;
+
+video/*)
+    if have ffmpegthumbnailer; then
+        [ -f "$thumb_png" ] || ffmpegthumbnailer -i "$file" -o "$thumb_png" -s 0 -q 8 >/dev/null 2>&1
+        [ -f "$thumb_png" ] && draw_image "$thumb_png"
+    fi
+    have mediainfo && mediainfo "$file" || file -- "$file"
+    ;;
+
+audio/*)
+    if have mediainfo; then
+        mediainfo "$file"
+    elif have exiftool; then
+        exiftool "$file"
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/pdf)
+    if have pdftotext; then
+        pdftotext -f 1 -l 5 -nopgbrk -q "$file" - >"$text_cache" 2>/dev/null || true
+        if grep -q '[[:alnum:]]' "$text_cache" 2>/dev/null; then
+            preview_text "$text_cache"
+            exit 0
+        fi
+    fi
+
+    if have pdftoppm; then
+        [ -f "$thumb_png" ] || pdftoppm -png -f 1 -singlefile "$file" "$thumb_base" >/dev/null 2>&1
+        [ -f "$thumb_png" ] && draw_image "$thumb_png"
+    fi
+
+    if have pdfinfo; then
+        pdfinfo "$file"
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/epub+zip | application/x-mobipocket-ebook)
+    if have gnome-epub-thumbnailer; then
+        [ -f "$thumb_jpg" ] || gnome-epub-thumbnailer "$file" "$thumb_jpg" >/dev/null 2>&1
+        [ -f "$thumb_jpg" ] && draw_image "$thumb_jpg"
+    fi
+    if have pandoc; then
+        pandoc -t plain "$file" 2>/dev/null | sed -n '1,250p'
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/zip | application/x-7z-compressed | application/x-rar | application/x-rar-compressed | application/x-tar | application/gzip | application/x-bzip2 | application/x-xz | application/zstd)
+    if have 7z; then
+        7z l -- "$file"
+    elif have bsdtar; then
+        bsdtar -tf "$file"
+    elif have unzip; then
+        unzip -l "$file"
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+    if have docx2txt; then
+        docx2txt "$file" - 2>/dev/null | sed -n '1,250p'
+    elif have pandoc; then
+        pandoc -t plain "$file" 2>/dev/null | sed -n '1,250p'
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/vnd.oasis.opendocument.text)
+    if have odt2txt; then
+        odt2txt "$file" 2>/dev/null | sed -n '1,250p'
+    elif have pandoc; then
+        pandoc -t plain "$file" 2>/dev/null | sed -n '1,250p'
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+    if have xlsx2csv; then
+        xlsx2csv "$file" 2>/dev/null | sed -n '1,250p'
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/vnd.ms-excel)
+    if have xls2csv; then
+        xls2csv "$file" 2>/dev/null | sed -n '1,250p'
+    else
+        file -- "$file"
+    fi
+    ;;
+
+application/vnd.openxmlformats-officedocument.presentationml.presentation)
+    if have pandoc; then
+        pandoc -t plain "$file" 2>/dev/null | sed -n '1,250p'
+    else
+        unzip -p "$file" 'ppt/slides/slide*.xml' 2>/dev/null |
+            sed 's/<[^>]*>/ /g' |
+            tr -s ' ' |
+            sed -n '1,250p'
+    fi
+    ;;
+
+*)
+    file --dereference --brief -- "$file"
+    printf '\n'
+    if have exiftool; then
+        exiftool "$file" 2>/dev/null | sed -n '1,80p'
+    fi
+    ;;
+esac
+
+exit 0
