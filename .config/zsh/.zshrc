@@ -199,8 +199,8 @@ alias dpkin="doas dpkg -i"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $XDG_CONFIG_HOME/zsh/completions/docker.zsh
-source $XDG_CONFIG_HOME/zsh/completions/git_lfs.zsh
+source $XDG_CONFIG_HOME/zsh/completions/*.zsh
+source $XDG_CONFIG_HOME/zsh/.zshenv
 
 eval "$(starship init zsh)"
 pfetch
