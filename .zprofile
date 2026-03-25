@@ -9,9 +9,9 @@ export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}:${$(find ~/.lo
 # Default Programs
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERM="st"
-export TERMINAL="st"
-export BROWSER="zen"
+export TERM="alacritty"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
 export READER="zathura"
 export FILEBROWSER="lfub"
 
