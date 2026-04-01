@@ -1,14 +1,32 @@
 [urgency_low]
 timeout = 3
-background = "#282828"
-foreground = "#ebdbb2"
+background = "#1e1e2e"   # Catppuccin Mocha base
+foreground = "#cdd6f4"   # text
+frame_color = "#45475a"  # surface1
 
 [urgency_normal]
 timeout = 6
-background = "#b8bb26"
-foreground = "#ebdbb2"
+background = "#89b4fa"   # blue
+foreground = "#1e1e2e"   # base
+frame_color = "#74c7ec"  # sapphire
 
 [urgency_critical]
 timeout = 0
-background = "#fb4934"
-foreground = "#ebdbb2"
+background = "#f38ba8"   # red
+foreground = "#1e1e2e"   # base
+frame_color = "#eba0ac"  # maroon
+
+[global]
+font = JetBrainsMono Nerd Font 10
+corner_radius = 10
+padding = 12
+horizontal_padding = 12
+frame_width = 2
+separator_height = 2
+separator_color = frame
+icon_corner_radius = 8
+offset = 16x16
+gap_size = 8
+transparency = 0
+markup = full
+format = "<b>%s</b>\n%b"
